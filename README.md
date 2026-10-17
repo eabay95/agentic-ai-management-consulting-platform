@@ -1,1 +1,1 @@
-# market-basket-recommendation
+# market-basket-recommendations
