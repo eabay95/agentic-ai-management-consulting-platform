@@ -1,1 +1,1 @@
-# market-basket-recommendations
+# agentic-ai-management-consulting-platform
