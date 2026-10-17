@@ -10,6 +10,26 @@ evaluation. See [resource inspection](docs/RESOURCE_NOTES.md) for the data inven
 
 ## Windows PowerShell setup
 
+For one-command setup and launch, run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\run.ps1
+```
+
+The launcher creates `.venv`, installs dependencies when requirements change,
+preserves your existing `.env`, safely extracts the supplied archives and updates
+the index before opening Streamlit. No virtual-environment activation is required.
+Python 3.11+ and internet access for the initial dependency installation are needed.
+The execution-policy flag applies only to this invocation, not your saved policy.
+Stop the server with Ctrl+C. If port 8501 is in use, append `-Port 8502`.
+
+Optional switches: `-FetchPublic` downloads the professor-approved online documents
+(use it on your first setup for technology sources); `-SetupOnly` prepares without
+starting Streamlit; `-Reinstall` reruns dependency installation; `-NoBrowser` keeps
+the browser closed; `-Plan` prints the steps without changing anything. Indexing
+uses your `.env` embedding settings; `EMBEDDING_BACKEND=local` needs no API key.
+If a step fails, the launcher stops with an error and can be rerun after fixing it.
+
 Python 3.11+ is required; this workspace was tested on Python 3.14. Dependencies
 are pinned to tested versions.
 
