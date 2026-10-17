@@ -1,0 +1,117 @@
+{
+  "exact_match_accuracy": 1.0,
+  "micro_precision": 1.0,
+  "micro_recall": 1.0,
+  "micro_f1": 1.0,
+  "cases": [
+    {
+      "question": "What financial and operational risks did Cisco disclose in fiscal 2025 SEC filings?",
+      "expected": [
+        "sec"
+      ],
+      "predicted": [
+        "sec"
+      ],
+      "exact": true
+    },
+    {
+      "question": "What were major reasons for food insecurity in the 2023 SOFI report?",
+      "expected": [
+        "csr"
+      ],
+      "predicted": [
+        "csr"
+      ],
+      "exact": true
+    },
+    {
+      "question": "How do food prices affect food security in the 2024 report?",
+      "expected": [
+        "csr"
+      ],
+      "predicted": [
+        "csr"
+      ],
+      "exact": true
+    },
+    {
+      "question": "Explain malnutrition in war zones using the 2023 report.",
+      "expected": [
+        "csr"
+      ],
+      "predicted": [
+        "csr"
+      ],
+      "exact": true
+    },
+    {
+      "question": "Our Cisco Catalyst router has intermittent connectivity. What diagnostics and replacement components should we consider?",
+      "expected": [
+        "technology"
+      ],
+      "predicted": [
+        "technology"
+      ],
+      "exact": true
+    },
+    {
+      "question": "Which Agilent instrument meets our laboratory throughput and assay requirements?",
+      "expected": [
+        "clinical"
+      ],
+      "predicted": [
+        "clinical"
+      ],
+      "exact": true
+    },
+    {
+      "question": "Evaluate Cisco networking infrastructure, financial risk and sustainability before we invest.",
+      "expected": [
+        "csr",
+        "sec",
+        "technology"
+      ],
+      "predicted": [
+        "csr",
+        "sec",
+        "technology"
+      ],
+      "exact": true
+    },
+    {
+      "question": "Our company is considering new laboratory technology. What equipment requirements, supplier financial risks and sustainability concerns should we evaluate?",
+      "expected": [
+        "clinical",
+        "csr",
+        "sec"
+      ],
+      "predicted": [
+        "clinical",
+        "csr",
+        "sec"
+      ],
+      "exact": true
+    },
+    {
+      "question": "Compare Alphabet annual reports for fiscal 2024 and 2025.",
+      "expected": [
+        "sec"
+      ],
+      "predicted": [
+        "sec"
+      ],
+      "exact": true
+    },
+    {
+      "question": "What does the supplied clinical paper say about machine learning approaches for predicting heart attacks?",
+      "expected": [
+        "clinical"
+      ],
+      "predicted": [
+        "clinical"
+      ],
+      "exact": true
+    }
+  ],
+  "limitation": "Small developer-labeled topic suite; not an independent benchmark."
+}

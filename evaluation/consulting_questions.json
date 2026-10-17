@@ -1,0 +1,12 @@
+[
+  {"question":"What financial and operational risks did Cisco disclose in fiscal 2025 SEC filings?","routes":["sec"],"sources":["6c821d1a-cf4e-4310-9801-df9399aa701b.pdf"],"domain":"sec","year":"2025"},
+  {"question":"What were major reasons for food insecurity in the 2023 SOFI report?","routes":["csr"],"sources":["SOFI-2023.pdf"],"domain":"csr","year":"2023"},
+  {"question":"How do food prices affect food security in the 2024 report?","routes":["csr"],"sources":["SOFI-2024.pdf"],"domain":"csr","year":"2024"},
+  {"question":"Explain malnutrition in war zones using the 2023 report.","routes":["csr"],"sources":["SOFI-2023.pdf"],"domain":"csr","year":"2023"},
+  {"question":"Our Cisco Catalyst router has intermittent connectivity. What diagnostics and replacement components should we consider?","routes":["technology"],"sources":[],"domain":"technology"},
+  {"question":"Which Agilent instrument meets our laboratory throughput and assay requirements?","routes":["clinical"],"sources":[],"domain":"clinical"},
+  {"question":"Evaluate Cisco networking infrastructure, financial risk and sustainability before we invest.","routes":["technology","sec","csr"],"sources":[]},
+  {"question":"Our company is considering new laboratory technology. What equipment requirements, supplier financial risks and sustainability concerns should we evaluate?","routes":["clinical","sec","csr"],"sources":[]},
+  {"question":"Compare Alphabet annual reports for fiscal 2024 and 2025.","routes":["sec"],"sources":["0ca59726-c36c-45fe-a114-e147f8cd7237.pdf","8873e505-7403-4c46-b377-81d814482cbb.pdf"],"domain":"sec"},
+  {"question":"What does the supplied clinical paper say about machine learning approaches for predicting heart attacks?","routes":["clinical"],"sources":["Machine_Learning_Approaches_for_Predicting_Heart_Attacks.pdf"],"domain":"clinical"}
+]

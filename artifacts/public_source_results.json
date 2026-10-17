@@ -1,0 +1,106 @@
+[
+  {
+    "url": "https://www.agilent.com/en/product/cell-analysis/real-time-cell-metabolic-analysis",
+    "status": "unavailable",
+    "error": "Page contains insufficient extractable documentation."
+  },
+  {
+    "url": "https://www.agilent.com/about/newsroom/presrel/2023/07mar-ca23010.html",
+    "status": "unavailable",
+    "error": "Client error '403 Forbidden' for url 'https://www.agilent.com/about/newsroom/presrel/2023/07mar-ca23010.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/digital-pathology",
+    "domain": "clinical",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\clinical\\public_web\\b04211b5fafcb80bb5dc.txt",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners",
+    "status": "unavailable",
+    "error": "Client error '403 Forbidden' for url 'https://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners/nanozoomer-slide-scanner-system-4370282",
+    "status": "unavailable",
+    "error": "Client error '403 Forbidden' for url 'https://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners/nanozoomer-slide-scanner-system-4370282'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/special-stains",
+    "status": "unavailable",
+    "error": "Client error '403 Forbidden' for url 'https://www.agilent.com/en/product/special-stains'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/catalyst-8300-series-edge-platforms/index.html",
+    "status": "unavailable",
+    "error": "Redirect response '301 Moved Permanently' for url 'https://www.cisco.com/c/en/us/products/routers/catalyst-8300-series-edge-platforms/index.html'\nRedirect location: 'https://www.cisco.com/site/us/en/products/networking/sdwan-routers/catalyst-8300-series-platforms/index.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/catalyst-8200-series-edge-platforms/index.html",
+    "status": "unavailable",
+    "error": "Redirect response '301 Moved Permanently' for url 'https://www.cisco.com/c/en/us/products/routers/catalyst-8200-series-edge-platforms/index.html'\nRedirect location: 'https://www.cisco.com/site/us/en/products/networking/sdwan-routers/catalyst-8200-series-platforms/index.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/catalyst-8000v-edge-software/index.html",
+    "status": "unavailable",
+    "error": "Redirect response '301 Moved Permanently' for url 'https://www.cisco.com/c/en/us/products/routers/catalyst-8000v-edge-software/index.html'\nRedirect location: 'https://www.cisco.com/site/us/en/products/networking/sdwan-routers/catalyst-8000v-edge-software/index.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/4000-series-integrated-services-routers-isr/index.html",
+    "status": "unavailable",
+    "error": "Redirect response '301 Moved Permanently' for url 'https://www.cisco.com/c/en/us/products/routers/4000-series-integrated-services-routers-isr/index.html'\nRedirect location: 'https://www.cisco.com/site/us/en/products/networking/sdwan-routers/4000-series-integrated-services-routers/index.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/asr-1000-series-aggregation-services-routers/index.html",
+    "status": "unavailable",
+    "error": "Redirect response '301 Moved Permanently' for url 'https://www.cisco.com/c/en/us/products/routers/asr-1000-series-aggregation-services-routers/index.html'\nRedirect location: 'https://www.cisco.com/site/us/en/products/networking/routers/asr-1000-series-aggregation-services-routers/index.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8300-series-edge-platforms/datasheet-c78-744088.pdf",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\fba0e7cb2284531d8384.pdf",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8200-series-edge-platforms/nb-06-cat8200-series-edge-plat-ds-cte-en.pdf",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\ded6fd1e7d2feb385f4a.pdf",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8000v-edge-software/catalyst-8000v-edge-software-ds.pdf",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\7cc46b771de56bf4e281.pdf",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/4000-series-integrated-services-routers-isr/data_sheet-c78-732542.pdf",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\18a1967ed4d6ca3671ec.pdf",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/asr-1000-series-aggregation-services-routers/datasheet-c78-731632.pdf",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\909fdcf750d45e7db338.pdf",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://docs.cloud.google.com/mcp/overview",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\ee44c4dad68545e5da9c.txt",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://cloud.google.com/discover/what-is-model-context-protocol?_gl=1*pmxwj5*_ga*MTkwNDE4NTYwNS4xNzc4MDEzOTM5*_ga_WH2QY8WWF5*czE3OTIyNTg0MzkkbzckZzEkdDE3OTIyNTg0NjUkajM0JGwwJGgw",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\9fc7f1fdcc084e7f56a2.txt",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://cloud.google.com/use-cases/retrieval-augmented-generation",
+    "domain": "technology",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\market-basket-recommendation\\data\\technology\\public_web\\9ee7abb8cc6547c45967.txt",
+    "status": "downloaded"
+  }
+]

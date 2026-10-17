@@ -1,0 +1,13 @@
+{
+  "streamlit": "1.54.0",
+  "openai": "3.34.0",
+  "chromadb": "1.5.9",
+  "PyMuPDF": "1.28.2",
+  "pandas": "2.3.3",
+  "mlxtend": "0.25.0",
+  "scikit-learn": "1.8.0",
+  "python-dotenv": "1.2.3",
+  "pytest": "9.1.1",
+  "beautifulsoup4": "4.15.0",
+  "google-genai": "2.31.0"
+}

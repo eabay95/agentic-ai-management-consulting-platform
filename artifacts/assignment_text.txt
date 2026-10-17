@@ -1,0 +1,297 @@
+PAGE 1
+CMPE 256 Recommender 
+System 
+Data Science Hackathon
+Dates: October 17,2026
+Fall 2026
+Professor: Chandrasekar Vuppalapati
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: October 17, 2026 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class
+
+
+PAGE 2
+Classified as Microsoft Confidential
+Data Science Hackathon: Building an 
+Agentic AI Management Consulting 
+Platform
+
+
+PAGE 3
+Multi Agent Architecture
+     
+           
+     
+              
+     
+         
+      
+                 
+             
+          
+              
+          
+              
+             
+      
+           
+         
+              
+         
+                   
+               
+     
+     
+      
+              
+      
+                
+     
+                        
+          
+             
+          
+              
+               
+         
+                
+  
+                  
+   
+Technology
+Cisco
+IBM
+Google
+Clinical
+Clinical PDFs
+Agilent
+SEC
+Cisco SEC 2025
+Agilent SEC 2025
+Corporate 
+Responsibility
+Food Security
+Management 
+Consulting Manager 
+Agent
+Result
+https://learn.microsoft.com/en-us/azure/architecture/ai-
+ml/guide/ai-agent-design-patterns 
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: October 17, 2026 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class
+
+
+PAGE 4
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: October 17, 2026 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class
+SJSU Management Consulting RAG
+List major Food insecurity reason in 2023 from within the context of  State of Food Security and 
+Nutrition in the World 2023 report.
+List major Food insecurity reason in 2023 from within the 
+context of  State of Food Security and Nutrition in the World 
+2023 report.
+Explain malnutrition in war zones from within the context of  State of Food Security and 
+Nutrition in the World 2023
+Multi Agent Architecture
+Prompts
+•
+List major Food insecurity reason in 2024
+•
+Explain malnutrition in war zones
+•
+Explain increase prices impact on food security
+
+
+PAGE 5
+Classified as Microsoft Confidential
+Enterprise Software Platform: Retrieval Augmented Generation
+Food and Agriculture Organization of the United Nations – The State of Food Security and Nutrition in the 
+World 
+App UX
+LLM  
+IR Search
+Data Sources
+(Food Security PDF.)
+Query → 
+Knowledge
+Prompt + Knowledge → 
+Response
+Transform into 
+Embeddings 
+(NLP)
+-2, -1 , 0, 1 
+2, 3, 4, 5
+6, 7, 8, 9 
+Orchestrator (middle 
+ware – RabbitMQ or 
+REST)
+
+
+PAGE 6
+Classified as Microsoft Confidential
+Market Basket Recommendation
+
+
+PAGE 7
+As a Data Science student at San José State University, you have been approached by an electronic retailer to design 
+and implement a Market Basket Recommendation System for their online checkout process. The primary objective is 
+to enhance the customer’s shopping experience by intelligently recommending additional products that are frequently 
+purchased together.
+When a shopper visits the retailer’s website, the checkout cart begins empty. As soon as the customer adds the first 
+item, the system should analyze historical transaction data to identify items that have been commonly purchased 
+alongside that product. The model then generates a ranked list of recommendations, presenting them as helpful 
+suggestions to the user.
+Each time the customer adds a new item—either from the recommended list or by freely selecting a different 
+product—the system dynamically updates its recommendations based on the current combination of items in the 
+cart. This iterative recommendation process continues throughout the checkout experience, allowing the model to 
+refine its predictions as new items are added.
+ 
+Electronic Retailer Market Basket Recommendation System for Online Checkout Integration
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: October 17, 2026 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class
+
+
+PAGE 8
+In some instances, the combination of selected items may not exist in the historical transactions dataset. In such 
+cases, the model should gracefully handle the absence of patterns and refrain from displaying irrelevant 
+recommendations. This ensures that the system remains both accurate and contextually relevant.
+As a Data Science major, your role involves designing, developing, and deploying this recommendation model. Once 
+trained, the model can be deployed as a FAST API or microservice, integrated with the retailer’s checkout system to 
+deliver real-time recommendations. The deployment phase would also involve model validation, performance 
+monitoring, and periodic retraining to ensure continued relevance as shopping trends evolve.
+Electronic Retailer Market Basket Recommendation System for Online Checkout Integration
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: October 17, 2026 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class
+
+
+PAGE 9
+Electronic Retailer Market Basket Recommendation System for Online Checkout Integration
+Electronic Item Checkout Web Portal 
+Axis M3046-V Network Camera (SKU: 0806-001)
+Axis P3225-LVE Network Camera (SKU: 0935-001)
+Axis P3367-VE Network Camera (SKU: 0407-001)
+Bosch B5512 Control Panel (SKU: B5512)
+Bosch B810 Wireless Receiver (SKU: B810)
+Bosch D7050 Detector (SKU: D7050)
+Bosch DS160 Detector (SKU: DS160)
+Bosch F220-B6 Detector Base (SKU: F220-B6)
+Bosch NDN-50022-A3 IP Camera (SKU: NDN-50022-A3)
+Bosch NDN-832V03-IP IP Camera (SKU: NDN-832V03-IP)
+Bosch NVR-5500-16A00 NVR (SKU: NVR-5500-16A00)
+DSC PG9914 Motion Detector (SKU: PG9914)
+DSC PowerSeries Neo Alarm Kit (SKU: HS2016NK)
+DSC WS4916 Smoke Detector (SKU: WS4916)
+DSC WS4933 Carbon Monoxide Detector (SKU: WS4933)
+DSC WS4939 Wireless Key (SKU: WS4939)
+Dahua 8-Channel NVR (SKU: NVR4208-8P-4KS2)
+Dahua DH-IPC-HDBW4431R-ZS IP Camera (SKU: DH-IPC-HDBW4431R-ZS)
+Dahua DH-IPC-HFW4431R-Z IP Camera (SKU: DH-IPC-HFW4431R-Z)
+GE Interlogix 60-652-95R Carbon Monoxide Detector (SKU: 60-652-95R)
+Added Items to Cart:
+Select Item from the List: 
+Recommended Items:
+New User Comes 
+to Portal 
+Add Item
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: October 17, 2026 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class
+
+
+PAGE 10
+Electronic Retailer Market Basket Recommendation System for Online Checkout Integration
+Electronic Item Checkout Web Portal 
+Bosch D7050 Detector (SKU: D7050)
+Axis M3046-V Network Camera (SKU: 0806-001)
+Axis P3225-LVE Network Camera (SKU: 0935-001)
+Axis P3367-VE Network Camera (SKU: 0407-001)
+Bosch B5512 Control Panel (SKU: B5512)
+Bosch B810 Wireless Receiver (SKU: B810)
+Bosch D7050 Detector (SKU: D7050)
+Bosch DS160 Detector (SKU: DS160)
+Bosch F220-B6 Detector Base (SKU: F220-B6)
+Bosch NDN-50022-A3 IP Camera (SKU: NDN-50022-A3)
+Bosch NDN-832V03-IP IP Camera (SKU: NDN-832V03-IP)
+Bosch NVR-5500-16A00 NVR (SKU: NVR-5500-16A00)
+DSC PG9914 Motion Detector (SKU: PG9914)
+DSC PowerSeries Neo Alarm Kit (SKU: HS2016NK)
+DSC WS4916 Smoke Detector (SKU: WS4916)
+DSC WS4933 Carbon Monoxide Detector (SKU: WS4933)
+DSC WS4939 Wireless Key (SKU: WS4939)
+Dahua 8-Channel NVR (SKU: NVR4208-8P-4KS2)
+Dahua DH-IPC-HDBW4431R-ZS IP Camera (SKU: DH-IPC-HDBW4431R-ZS)
+Dahua DH-IPC-HFW4431R-Z IP Camera (SKU: DH-IPC-HFW4431R-Z)
+GE Interlogix 60-652-95R Carbon Monoxide Detector (SKU: 60-652-95R)
+Added Items to Cart:
+Select Item from the List: 
+Recommended Items:
+1. User Selects Highlighted 
+Item to Cart 
+2. Item Added to Cart
+3. Recommended Items 
+based on Cart Items
+Add Item
+Next Items list  based on Bosch D7050 Detector (SKU: D7050) 
+1. User Selects Highlighted 
+Item to Cart 
+2. Item Added to Cart
+3. Recommended Items 
+based on Cart Items
+1.
+User Selects Highlighted Item to 
+Cart 
+2.
+Item Added to Cart
+3.
+Recommended Items based on 
+Cart Items
+1
+2
+3
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: October 17, 2026 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class
+
+
+PAGE 11
+Electronic Retailer Market Basket Recommendation System for Online Checkout Integration
+Electronic Item Checkout Web Portal 
+Bosch D7050 Detector (SKU: D7050)
+Axis M3046-V Network Camera (SKU: 0806-001)
+Axis P3225-LVE Network Camera (SKU: 0935-001)
+Axis P3367-VE Network Camera (SKU: 0407-001)
+Bosch B5512 Control Panel (SKU: B5512)
+Bosch B810 Wireless Receiver (SKU: B810)
+Bosch D7050 Detector (SKU: D7050)
+Bosch DS160 Detector (SKU: DS160)
+Bosch F220-B6 Detector Base (SKU: F220-B6)
+Bosch NDN-50022-A3 IP Camera (SKU: NDN-50022-A3)
+Bosch NDN-832V03-IP IP Camera (SKU: NDN-832V03-IP)
+Bosch NVR-5500-16A00 NVR (SKU: NVR-5500-16A00)
+DSC PG9914 Motion Detector (SKU: PG9914)
+DSC PowerSeries Neo Alarm Kit (SKU: HS2016NK)
+DSC WS4916 Smoke Detector (SKU: WS4916)
+DSC WS4933 Carbon Monoxide Detector (SKU: WS4933)
+DSC WS4939 Wireless Key (SKU: WS4939)
+Dahua 8-Channel NVR (SKU: NVR4208-8P-4KS2)
+Dahua DH-IPC-HDBW4431R-ZS IP Camera (SKU: DH-IPC-HDBW4431R-ZS)
+Dahua DH-IPC-HFW4431R-Z IP Camera (SKU: DH-IPC-HFW4431R-Z)
+GE Interlogix 60-652-95R Carbon Monoxide Detector (SKU: 60-652-95R)
+Added Items to Cart:
+Select Item from the List: 
+Recommended Items:
+1. User Selects Highlighted 
+Item to Cart 
+2. Item Added to Cart
+3. Recommended Items 
+based on Cart Items
+Add Item
+Next Items list  based on Bosch D7050 Detector (SKU: D7050) and DSC PG9914 Motion Detector (SKU: PG9914)
+1. User Selects Highlighted 
+Item to Cart 
+2. Item Added to Cart
+3. Recommended Items 
+based on Cart Items
+1.
+User Selects Highlighted Item to 
+Cart 
+2.
+Item Added to Cart
+3.
+Recommended Items based on 
+Cart Items
+1
+2
+3
+DSC PG9914 Motion Detector (SKU: PG9914)
+Data Science Hackathon – CMPE 256 Recommender Systems, Chandrasekar Vuppalapati, Date: November 01 – 02, 2025 – Academic Learning – reserved to students of San Jose State and CMPE 256 Class

@@ -1,0 +1,17 @@
+{
+  "train_transactions": 800,
+  "test_transactions": 200,
+  "seed": 256,
+  "k": 5,
+  "precision_at_k": 0.05,
+  "recall_at_k": 0.11416666666666667,
+  "coverage": 1.0,
+  "hit_rate": 0.22,
+  "useful_rules": 459,
+  "parameters": {
+    "support": 0.005,
+    "confidence": 0.08,
+    "lift": 1.0
+  },
+  "protocol": "80/20 unique-basket split; half-basket holdout; strict Precision@K"
+}

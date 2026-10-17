@@ -1,0 +1,72 @@
+{
+  "k": 5,
+  "backend": "hashing-2048-v1",
+  "mean_source_recall_at_k": 1.0,
+  "cases": [
+    {
+      "question": "What financial and operational risks did Cisco disclose in fiscal 2025 SEC filings?",
+      "expected": [
+        "6c821d1a-cf4e-4310-9801-df9399aa701b.pdf"
+      ],
+      "retrieved": [
+        "6c821d1a-cf4e-4310-9801-df9399aa701b.pdf"
+      ],
+      "source_recall": 1.0
+    },
+    {
+      "question": "What were major reasons for food insecurity in the 2023 SOFI report?",
+      "expected": [
+        "SOFI-2023.pdf"
+      ],
+      "retrieved": [
+        "SOFI-2023.pdf"
+      ],
+      "source_recall": 1.0
+    },
+    {
+      "question": "How do food prices affect food security in the 2024 report?",
+      "expected": [
+        "SOFI-2024.pdf"
+      ],
+      "retrieved": [
+        "SOFI-2024.pdf"
+      ],
+      "source_recall": 1.0
+    },
+    {
+      "question": "Explain malnutrition in war zones using the 2023 report.",
+      "expected": [
+        "SOFI-2023.pdf"
+      ],
+      "retrieved": [
+        "SOFI-2023.pdf"
+      ],
+      "source_recall": 1.0
+    },
+    {
+      "question": "Compare Alphabet annual reports for fiscal 2024 and 2025.",
+      "expected": [
+        "0ca59726-c36c-45fe-a114-e147f8cd7237.pdf",
+        "8873e505-7403-4c46-b377-81d814482cbb.pdf"
+      ],
+      "retrieved": [
+        "0ca59726-c36c-45fe-a114-e147f8cd7237.pdf",
+        "8873e505-7403-4c46-b377-81d814482cbb.pdf"
+      ],
+      "source_recall": 1.0
+    },
+    {
+      "question": "What does the supplied clinical paper say about machine learning approaches for predicting heart attacks?",
+      "expected": [
+        "Machine_Learning_Approaches_for_Predicting_Heart_Attacks.pdf"
+      ],
+      "retrieved": [
+        "Machine_Learning_Approaches_for_Predicting_Heart_Attacks.pdf",
+        "Prediction_of_Heart_Disease_using_Machine_Learning_Technique.pdf"
+      ],
+      "source_recall": 1.0
+    }
+  ],
+  "scope": "Document-level labels, not passage relevance judgments; K per requested year.",
+  "human_quality_review": "not_run"
+}

@@ -1,0 +1,421 @@
+[
+  {
+    "name": "Agilent.txt",
+    "bytes": 704,
+    "sha256": "e0866284c89fd4bc77f326e7035fc7ef0cb9577329cb0d1ba2aa68e24fd9fda7",
+    "text": "Seahorse Real-Time Cell Metabolic Analysis\nhttps://www.agilent.com/en/product/cell-analysis/real-time-cell-metabolic-analysis\nhttps://www.agilent.com/about/newsroom/presrel/2023/07mar-ca23010.html\n\nDigital Pathology\nhttps://www.agilent.com/en/product/digital-pathology\n\nFast, high-quality whole-slide imaging for pathology labs\nhttps://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners\nNanoZoomer® Slide Scanner System IVD\nhttps://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners/nanozoomer-slide-scanner-system-4370282\nArtisan Link Pro. The consistent, safe and easy choice for special stains.\nhttps://www.agilent.com/en/product/special-stains\n"
+  },
+  {
+    "name": "Clinical.zip",
+    "bytes": 51802462,
+    "sha256": "2708e14eda0c8db97bb83920a47b1dff148211c0dbb66c7283e93be01e37e20b",
+    "members": [
+      {
+        "name": "Clinical/",
+        "bytes": 0
+      },
+      {
+        "name": "Clinical/Covid/",
+        "bytes": 0
+      },
+      {
+        "name": "Clinical/Covid/Analysis_and_Prediction_of_COVID-19_using_Machine_Learning.pdf",
+        "bytes": 629424,
+        "pages": 7,
+        "cover_excerpt": " \n \n1 \nAnalysis and Prediction of COVID-19 using \nMachine Learning \n \nMr. M.Parthiban and Dr. Anna Alphy \n \n1Research Scholar, Department of CSE, SRM Institute of Science and Technology , Delhi-NCR Campus, Modi Nagar,  \nGhaziabad – 201204 \n2Assistant professor, Department of CSE, SRM Institute of Science and Technology ,Delhi-NCR Campus, Modi Nagar,  \nGhaziabad – 201204 \n \nE-mail : pm9590@srmist.edu.in, annaa@srmist.edu.in \n \nAbstract- In order to support the control and containment of \nthe virus, accurate and efficient predictive models must be \ndeveloped. The COVID-19 pandemic has presented hitherto \nunheard-of challenges for international health systems. This \nwork offers a novel approach for COVID-19 infection \nprediction using binary classification models, specifically \nRandom Forest and XGBoost algorithms. These models are \nwell-known for their excellent accuracy and efficiency when \nhandling complicated datasets. This research focuses on \nutilizing the advantages of ensemble learning techniques to \nimprove prediction accuracy, in contrast to earlier \napproaches that depended on different machine learning \ntechniques with differing degrees of success. The technique \ninvolves a comprehensive preprocessing of the data to \ngenerate a dataset containing COVID-19 symptoms and \npatient demographics. Next, the XGBoost and Random \nForest models are used to classify individuals as COVID-19 \neither beneficial or detrimental. The aim of the research is to \ndetermine the predictive power of these models for COVID-\n19 infections through a comparative analysis of the models \nunder various experimental conditions. \n \nKeywords— COVID-19, XGBOOST, Random-forest, Binary \nClassification, Data Analysis, Predictive Modelling. \n \nI. INTRODUCTION \n \nThe COVID-19 pandemic was started by "
+      },
+      {
+        "name": "Clinical/Covid/Big_Data_Analytics_on_Irritating_Anxiety_of_Long_COVID.pdf",
+        "bytes": 439048,
+        "pages": 7,
+        "cover_excerpt": "Big Data Analytics on Irritating Anxiety of Long COVID \n \n \n \n \n \n \n \n \nAbstract \nBig data and its analytics can perform in different areas \nof human society. The aim of this paper is to produce the \nirritating anxiety of Long COVID from different age \ngroups of persons in Kottayam district, Kerala state, \nIndia. Using different communication methods persons \ncan deeply contact and can discuss the matters in rapid \nway. In 2020, COVID-19 disease spread in the world by \nphysical contacting, initially from neighbor contacts and \nit spread all over the world. The communication systems \ncommunicate the pandemic situation and discuss various \ntreatment methods in appropriate time. Apart from \nvaccination mind power and immunity power attained \nby the humans through trained personals as advice and \nphysical exercise. All these are fully favored during that \ntime and the humans had overcome the situation. But in \nafter some years the anxiety is existing in human mind \nabout the virus and vaccination with its side effects. The \nfeel of the disease after COVID-19 is based on the early \naffected Corona virus and this virus still existing in \nhuman body. Newly formed diseases have the same \nsymptoms of COVID-19 and the humans are afraid \nabout the presence of Corona virus. By an evaluation of \ndifferent age group of persons in a district, they have a \nfaith, that is, Corona virus generating different impact in \nhuman mind and that will lead to anxiety in human \nmind. \nKeywords: Big Data, COVID-19, Long COVID, \nIrritating Anxiety, Covaccine, Covishield \n \n1. Introduction \nBig data refers to the massive volume of data from \norganizations, society, social media and medical \nresearch. This large volume of data is either structured \nor unstructured data and it is retrieved from differe"
+      },
+      {
+        "name": "Clinical/Covid/COVID-19_Update_Forecast_and_Assistant_-_An_Interactive_Web_Portal_to_Provide_Real-Time_Information_and_Forecast_COVID-19_Cases_in_Bangladesh.pdf",
+        "bytes": 1102649,
+        "pages": 5,
+        "cover_excerpt": "2021 International Conference on Information and Communication Technology \nfor Sustainable Development (ICICT4SD), 27-28 February, Dhaka\nCOVID-19: Update, Forecast and Assistant - An\nInteractive Web Portal to Provide Real-Time\nInformation and Forecast COVID-19 Cases in\nBangladesh\nMd. Shahriare Satu∗, Md. Khalilur Rahman†, Maksud Alam Rony‡, Ahmedur Rahman Shovon§,\nMd. Jane Alam Adnan†, Koushik Chandra Howlader‡, M Shamim Kaiser¶\n∗Department of Management Information Systems, Noakhali Science and Technology University, Bangladesh\n†Department of Information and Communication Engineering, Noakhali Science and Technology University, Bangladesh\n‡Department of Computer Science and Telecommunication, Noakhali Science and Technology University, Bangladesh\n§Institute of Information Technology, Jahangirnagar University, Bangladesh\nEmail: shahriarsetu.mis@nstu.edu.bd∗, khalilnstu@gmail.com†, maksudalom786100@gmail.com‡, shovon.sylhet@gmail.com§,\njanealamadnan3@gmail.com†, koushiksoul@gmail.com‡, mskaiser@juniv.edu ¶\nAbstract—Since December 2019, Novel coronavirus disease has\nbeen shown an extensive impact on social, mental, personal,\nand economic ﬁelds throughout the world. In this pandemic\nsituation, people are worried and interested to know what is\ngoing on in the upcoming days. Therefore, it is very important\nto provide relevant information about how many people are\naffected and will infect in near future. Moreover, they need\nto know how to spread different symptoms and prevention\nsteps of this disease. Hence, we developed an informative and\nprediction-based web portal named COVID-19: Update, Forecast\nand Assistant which provides real-time information on COVID-\n19 cases in Bangladesh and worldwide. In this model, we also\nprovide a machine learning-based short-term forecasting w"
+      },
+      {
+        "name": "Clinical/Covid/COVID_Detection_using_Deep_Learning.pdf",
+        "bytes": 1659807,
+        "pages": 7,
+        "cover_excerpt": "COVID Detection using Deep Learning \n \n \nDr. M. Jagadeeswari \nDr.S.Padmapriya \nShri lalitha G \nDepartment of ECE \nDept. of ECE \nDept. of ECE \nSri Ramakrishna Engineering College \nSREC \nSREC \nCoimbatore, India \nCoimbatore, India \nCoimbatore, India \nhod-ece@srec.ac.in \npadmapriya.s@srec.ac.in \nshrilalitha.1802215@srec.ac.in \nSuvetha S       . \nDept of ECE \nSREC \nCoimbatore, India \nsuvetha.1802236@srec.ac.in \nSharmila D     \nDept. of ECE \nSREC \nCoimbatore, India \nsharmila.1802209@srec.ac.in \n \n \n \nAbstract— COVID-19 is a rapidly spreading pandemic, \nwith the first cases being discovered in December 2019 Wuhan, \nChina. CT scan images of the patient’s lung are used where \nCNN algorithm is implemented. A comparative study of two \nmore CNN models are used to evaluate this model (Resnet). \nThe proposed model (Resnet) is capable of accurately \npredicting illness with an accuracy of 95.74%. This model can \ndistinguish between covid, pneumonia, and normal CT scan \npictures. Alexnet, Resnet, and Xception methods are utilised to \ncompare the trained model to the input photos. Its then used to \nforecast the outcome. COVID/PNEUMONIA will be informed \nto the user through SMS based on CT scan findings.Result, \navailability of beds in the users' immediate vicinity, and \nhospital recommendations will be sent as an sms to the user. \nKeywords— COVID-19, pneumonia, Alexnet, Resnet , \nXception \n \nI. INTRODUCTION \nCoronavirus disease is a communicable disease. The \nseverity of the disease can vary from a normal cold like \nsickness to the possibility of death. Signs of the respiration \nsystem being infected due to coronavirus may additionally \nhave minor, self-proscribing ailments with unfavourable \noutcomes like influenza on uncommon activities. Fever, \ncoughing, anosmia, ageusia, headaches, d"
+      },
+      {
+        "name": "Clinical/Covid/Extraction_of_Features_from_Lung_Image_for_the_Detection_of_Covid-19.pdf",
+        "bytes": 766750,
+        "pages": 6,
+        "cover_excerpt": "Extraction of Features from Lung Image for the\nDetection of Covid-19\nSushmitha M*\nDepartment of Biomedical Engineering, \nSaveetha Engineering College, Anna \nUniversity, Chennai \nsushmitham@saveetha.ac.in\nAnjana S\nDepartment of Biomedical Engineering, \nSaveetha Engineering College, Anna\nUniversity, Chennai\nhonouranja@gmail.com\nKavi Bharathi R\nDepartment of Biomedical Engineering,\nSaveetha Engineering College, Anna\nUniversity, Chennai\nkavibharathisai@gmail.com\nLavanya B\nDepartment of Biomedical Engineering, Saveetha Engineering \nCollege, Anna University, Chennai \nlavanyabaskaran0627@gmail.com\nBhavadharani V\nDepartment of Biomedical Engineering, Saveetha Engineering \nCollege, Anna University, Chennai \nbhavadharaniv@saveetha.ac.in\nAbstract- The World Health Organization has identified two \nnew human cases of Coronavirus type 2 (CoV-2)-induced severe \nacute respiratory syndrome and a new pandemic illness known \nas coronavirus disease (COVID-19). It was initially discovered \nin Wuhan, China, in December 2019, and afterwards spread \nwidely. The novel COVID-19 continues to increase with \nconfirmed cases that may result in deaths worldwide as a result \nof respiratory failure and alveolar damage. The common \nsymptoms of SARS- CoV- include dyspnea, chest pain, fatigue \nand less common symptoms include headache, vomiting and \nnausea. The diagnosis of SARS-CoV2 infection was the key step \nto identify the infection and then prevention and quarantine are \nnext steps to be considered as the way to stop the spreading of \nvirus, since there is no specific vaccine, drugs or antiviral \nagainst the COVID-19 virus. The patients with COVID-19 are \nhelped with oxygen therapy and antivirals like Lopinavir, \nRitonavir, Ribavirin and Favipiravir are currently used. The \nessential way to control a"
+      },
+      {
+        "name": "Clinical/ctg-studies_covid.csv",
+        "bytes": 17959076,
+        "columns": [
+          "NCT Number",
+          "Study Title",
+          "Study URL",
+          "Acronym",
+          "Study Status",
+          "Brief Summary",
+          "Study Results",
+          "Conditions",
+          "Interventions",
+          "Primary Outcome Measures",
+          "Secondary Outcome Measures",
+          "Other Outcome Measures",
+          "Sponsor",
+          "Collaborators",
+          "Sex",
+          "Age",
+          "Phases",
+          "Enrollment",
+          "Funder Type",
+          "Study Type",
+          "Study Design",
+          "Other IDs",
+          "Start Date",
+          "Primary Completion Date",
+          "Completion Date",
+          "First Posted",
+          "Results First Posted",
+          "Last Update Posted",
+          "Locations",
+          "Study Documents"
+        ],
+        "preview_rows": 5
+      },
+      {
+        "name": "Clinical/ctg-studies_diabetes.csv",
+        "bytes": 77581364,
+        "columns": [
+          "NCT Number",
+          "Study Title",
+          "Study URL",
+          "Acronym",
+          "Study Status",
+          "Brief Summary",
+          "Study Results",
+          "Conditions",
+          "Interventions",
+          "Primary Outcome Measures",
+          "Secondary Outcome Measures",
+          "Other Outcome Measures",
+          "Sponsor",
+          "Collaborators",
+          "Sex",
+          "Age",
+          "Phases",
+          "Enrollment",
+          "Funder Type",
+          "Study Type",
+          "Study Design",
+          "Other IDs",
+          "Start Date",
+          "Primary Completion Date",
+          "Completion Date",
+          "First Posted",
+          "Results First Posted",
+          "Last Update Posted",
+          "Locations",
+          "Study Documents"
+        ],
+        "preview_rows": 5
+      },
+      {
+        "name": "Clinical/ctg-studies_Hearattack.csv",
+        "bytes": 12297150,
+        "columns": [
+          "NCT Number",
+          "Study Title",
+          "Study URL",
+          "Acronym",
+          "Study Status",
+          "Brief Summary",
+          "Study Results",
+          "Conditions",
+          "Interventions",
+          "Primary Outcome Measures",
+          "Secondary Outcome Measures",
+          "Other Outcome Measures",
+          "Sponsor",
+          "Collaborators",
+          "Sex",
+          "Age",
+          "Phases",
+          "Enrollment",
+          "Funder Type",
+          "Study Type",
+          "Study Design",
+          "Other IDs",
+          "Start Date",
+          "Primary Completion Date",
+          "Completion Date",
+          "First Posted",
+          "Results First Posted",
+          "Last Update Posted",
+          "Locations",
+          "Study Documents"
+        ],
+        "preview_rows": 5
+      },
+      {
+        "name": "Clinical/ctg-studies_KneeInjuries.csv",
+        "bytes": 4225079,
+        "columns": [
+          "NCT Number",
+          "Study Title",
+          "Study URL",
+          "Acronym",
+          "Study Status",
+          "Brief Summary",
+          "Study Results",
+          "Conditions",
+          "Interventions",
+          "Primary Outcome Measures",
+          "Secondary Outcome Measures",
+          "Other Outcome Measures",
+          "Sponsor",
+          "Collaborators",
+          "Sex",
+          "Age",
+          "Phases",
+          "Enrollment",
+          "Funder Type",
+          "Study Type",
+          "Study Design",
+          "Other IDs",
+          "Start Date",
+          "Primary Completion Date",
+          "Completion Date",
+          "First Posted",
+          "Results First Posted",
+          "Last Update Posted",
+          "Locations",
+          "Study Documents"
+        ],
+        "preview_rows": 5
+      },
+      {
+        "name": "Clinical/Diabetes/",
+        "bytes": 0
+      },
+      {
+        "name": "Clinical/Diabetes/Artificial_Intelligence_and_Machine_Learning_for_Improving_Glycemic_Control_in_Diabetes_Best_Practices_Pitfalls_and_Opportunities.pdf",
+        "bytes": 3349305,
+        "pages": 23,
+        "cover_excerpt": "IEEE REVIEWS IN BIOMEDICAL ENGINEERING, VOL. 17, 2024\n19\nArtiﬁcial Intelligence and Machine Learning for\nImproving Glycemic Control in Diabetes: Best\nPractices, Pitfalls, and Opportunities\nPeter G. Jacobs\n, Member, IEEE, Pau Herrero\n, Andrea Facchinetti\n, Josep Vehi\n,\nBoris Kovatchev\n, Marc D. Breton\n, Ali Cinar\n, Konstantina S. Nikita\n, Fellow, IEEE, Francis J. Doyle\nIII\n, Fellow, IEEE, Jorge Bondia\n, Tadej Battelino\n, Jessica R. Castle\n,\nKonstantia Zarkogianni\n, Member, IEEE, Rahul Narayan, and Clara Mosquera-Lopez\n, Member, IEEE\n(Methodological Review)\nAbstract—Objective: Artiﬁcial intelligence and machine\nlearning are transforming many ﬁelds including medicine.\nIn diabetes, robust biosensing technologies and automated\nManuscript received 10 February 2023; revised 19 June 2023 and\n15 September 2023; accepted 2 November 2023. Date of publication 9\nNovember 2023; date of current version 15 January 2024. Correspond-\ning author: Peter G. Jacobs.)\nPeter G. Jacobs and Rahul Narayan are with the Department of\nBiomedical Engineering, Oregon Health & Science University, Portland,\nOR 97239 USA (e-mail: jacobsp@ohsu.edu; narayanr@ohsu.edu).\nPau Herrero is with Roche Diabetes Care, 08174 Sant Cugat del\nValles, Spain (e-mail: pau.herrero_vinas@roche.com).\nAndrea Facchinetti is with the Department of Information Engineering,\nUniversità degli Studi di Padova, 35122 Padova, Italy (e-mail: facchine\n@dei.unipd.it).\nJosep Vehi is with the University of Girona and CIBERDEM, Insti-\ntuto de Salud Carlos III, 28029 Madrid, Spain (e-mail: josep.vehi@\ngmail.com).\nBoris Kovatchev is with the University of Virginia, Charlottesville, VA\n22091–4888 USA (e-mail: bpk2u@virginia.edu).\nMarc D.\nBreton\nis with\nthe\nCenter\nfor\nDiabetes\nTechnology,\nUniversity of Virginia, Charlottesville, VA 22908-4888 U"
+      },
+      {
+        "name": "Clinical/Diabetes/Deep_Learning-Based_Genetic_Detection_and_Pathogenesis_of_Diabetes.pdf",
+        "bytes": 936657,
+        "pages": 4,
+        "cover_excerpt": "Deep learning-based genetic detection and \npathogenesis of diabetes \n \nSihan Chen， \nUniversity of Toronto, Toronto, Canada \nveronica.chen@mail.utoronto.ca \nLinshan Cao \nNortheast Forestry University, Harbin, \nChina \n clover20020121@qq.com \nAbstract—In the development of modern science and \ntechnology innovation, how to use deep learning algorithms to \ndiagnose diseases is the main problem in artificial intelligence \nresearch. As one of the major diseases affecting human physical \nand mental health, diabetes is a disease caused by high glucose \nlevels in the blood, with high morbidity, high treatment cost and \nhigh mortality. If it is not effectively controlled for a long time, \nit will directly damage various human body organs. In this \npaper, after understanding the research status of diabetes gene \ntesting and morbidity association, combined with the deep \nlearning concept in the field of artificial intelligence, the main \nresearch is how to prevent and control the complications of \ndiabetes at the source, how to build a scientific and effective \ndisease prediction system, to create convenient conditions for \nmedical diagnosis, and truly achieve the development goal of \nearly detection and early treatment. \nKeywords—Deep learning; Diabetes mellitus; Genetic \ntesting; Morbidity association; Prediction system \nI. INTRODUCTION \nWith the gradual development of China's medical \ntechnology level, most third-class hospitals have built a \ncomplete electronic medical system for hospitals. On the one \nhand, it can help medical staff accurately record various data \ninformation and obtain more effective content during data \ndevelopment. On the other hand, it can protect patients' \nprivacy and provide quality services for patient treatment \nwhile mining data resources. According t"
+      },
+      {
+        "name": "Clinical/Diabetes/Exploring_Biomarker_Relationships_in_Both_Type_1_and_Type_2_Diabetes_Mellitus_Through_a_Bayesian_Network_Analysis_Approach.pdf",
+        "bytes": 2170248,
+        "pages": 5,
+        "cover_excerpt": "Exploring Biomarker Relationships in Both Type 1\nand Type 2 Diabetes Mellitus Through a Bayesian\nNetwork Analysis Approach\nYuyang Sun\nDepartment of Engineering\nKing’s College London\nLondon, United Kingdom\nyuyang.1.sun@kcl.ac.uk\nJingyu Lei\nDivision of Surgery and Interventional Science\nUniversity College London\nLondon, United Kingdom\njingyu.lei.22@ucl.ac.uk\nPanagiotis Kosmas\nDepartment of Engineering\nKing’s College London\nLondon, United Kingdom\npanagiotis.kosmas@kcl.ac.uk\nAbstract—Understanding\nthe\ncomplex\nrelationships\nof\nbiomarkers in diabetes is pivotal for advancing treatment\nstrategies, a pressing need in diabetes research. This study\napplies Bayesian network structure learning to analyze the\nShanghai Type 1 and Type 2 diabetes mellitus datasets, revealing\ncomplex relationships among key diabetes-related biomarkers.\nThe constructed Bayesian network presented notable predictive\naccuracy, particularly for Type 2 diabetes mellitus, with root\nmean squared error (RMSE) of 18.23 mg/dL, as validated\nthrough leave-one-domain experiments and Clarke error grid\nanalysis. This study not only elucidates the intricate dynamics of\ndiabetes through a deeper understanding of biomarker interplay\nbut also underscores the significant potential of integrating\ndata-driven and knowledge-driven methodologies in the realm\nof personalized diabetes management. Such an approach paves\nthe way for more custom and effective treatment strategies,\nmarking a notable advancement in the field.\nIndex Terms—Bayesian network, Structure learning, Glucose\nprediction, Diabetes management.\nI. INTRODUCTION\nDiabetes mellitus (DM), a chronic metabolic disorder, has\nemerged as a global health crisis, affecting millions and\nescalating rapidly in prevalence and presenting significant\nchallenges in diagnosis and ma"
+      },
+      {
+        "name": "Clinical/Diabetes/Improving_Self-Management_of_Type_2_Diabetes_Evaluating_the_Effectiveness_of_a_Mobile_App-Based_Patient_Education_Approach.pdf",
+        "bytes": 291922,
+        "pages": 5,
+        "cover_excerpt": "979-8-3503-5413-3/24/$31.00 ©2024 IEEE \nImproving Self-Management of Type 2 Diabetes: \nEvaluating the Effectiveness of a Mobile App-\nBased Patient Education Approach\nMuhammad Thesa Ghozali  \nDepartment of Pharmaceutical Management, School of Pharmacy, Faculty of Medicine and Health Sciences  \nUniversitas Muhammadiyah Yogyakarta \nSpecial Region of Yogyakarta, Indonesia \nghozali@umy.ac.id  \nAbstract— This study evaluates the impact of a mobile app-\nbased educational program on self-management in Type 2 \nDiabetes Mellitus (T2DM) patients residing in rural areas, a \ndemographic increasingly affected by T2DM and facing limited \nhealthcare access and educational resources. The study adopts a \none-group pre–test–post–test design, focusing on the use of the \nDiabetes Diary mobile app in conjunction with a modified \nquestionnaire based on standardized proven diabetes self-care \nmethodologies. Study participants, chosen through purposive \nsampling in Lampung, Indonesia, were T2DM individuals aged \n18 and above who had access to mobile devices compatible with \nthe app. Those with other types of diabetes or severe diabetic \ncomplications were excluded. The research methodology \ninvolved evaluating the variation in self-management skills of \nthe participants before and after using the app. Data analysis, \nconducted via a paired sample t-test, revealed a notable \nenhancement in self-management capabilities post-intervention \n(t-value of -2.157, significance value of 0.036). This result \nsupports the hypothesis that an educational program delivered \nthrough a mobile application significantly improves diabetes \nmanagement. The study’s findings are consistent with existing \nliterature, which underscores the effectiveness of the diverse \neducational tools in enhancing patient knowledge a"
+      },
+      {
+        "name": "Clinical/Diabetes/Knowledge-Infused_LLM-Powered_Conversational_Health_Agent_A_Case_Study_for_Diabetes_Patients.pdf",
+        "bytes": 349428,
+        "pages": 4,
+        "cover_excerpt": "Knowledge-Infused LLM-Powered Conversational\nHealth Agent: A Case Study for Diabetes Patients\nMahyar Abbasian1, Zhongqi Yang1, Elahe Khatibi1, Pengfei Zhang1, Nitish Nagesh1,\nIman Azimi1, Ramesh Jain1, and Amir M. Rahmani1,2\n1Department of Computer Science, University of California, Irvine\n2School of Nursing, University of California, Irvine\n{abbasiam, zhongqy4, ekhatibi, pengfz5, nnagesh1, azimii, rcjain, a.rahmani}@uci.edu\nAbstract—Effective diabetes management is crucial for main-\ntaining health in diabetic patients. Large Language Models\n(LLMs) have opened new avenues for diabetes management, fa-\ncilitating their efficacy. However, current LLM-based approaches\nare limited by their dependence on general sources and lack of\nintegration with domain-specific knowledge, leading to inaccurate\nresponses. In this paper, we propose a knowledge-infused LLM-\npowered conversational health agent (CHA) for diabetic patients.\nWe customize and leverage the open-source openCHA frame-\nwork, enhancing our CHA with external knowledge and analyti-\ncal capabilities. This integration involves two key components: 1)\nincorporating the American Diabetes Association dietary guide-\nlines and the Nutritionix information and 2) deploying analytical\ntools that enable nutritional intake calculation and comparison\nwith the guidelines. We compare the proposed CHA with GPT4.\nOur evaluation includes 100 diabetes-related questions on daily\nmeal choices and assessing the potential risks associated with\nthe suggested diet. Our findings show that the proposed agent\ndemonstrates superior performance in generating responses to\nmanage essential nutrients.\nIndex Terms—LLMs, Knowledge Graph, Diabetes, Nutrition\nTherapy, Health Agents.\nI. INTRODUCTION\nEffective diabetes management plays a pivotal role in main-\n"
+      },
+      {
+        "name": "Clinical/Heart_attack/",
+        "bytes": 0
+      },
+      {
+        "name": "Clinical/Heart_attack/Fog-Driven_Heart_Attack_Prediction_from_Wearable_Edge_Devices.pdf",
+        "bytes": 376336,
+        "pages": 5,
+        "cover_excerpt": "Fog-Driven Heart Attack Prediction from Wearable\nEdge Devices\nManya K Ravindranathan\nDepartment of Computer Science and\nEngineering,\nNational Institute of Technology\nPuducherry,\nKaraikal, India\nmanya080501[at]gmail.com\nSendil Vadivu D\nDepartment of Computer Science and\nEngineering,\nNational Institute of Technology\nPuducherry,\nKaraikal, India\nashasendilvadivu[at]gmail.com\nNarendran Rajagopalan\nDepartment of Computer Science and\nEngineering,\nNational Institute of Technology\nPuducherry,\nKaraikal, India\nnarendran[at]nitpy.ac.in\nAbstract—Cardiovascular diseases, such as heart attacks, are\na significant global health concern, responsible for a great deal of\nannual mortality. The introduction of wearable edge devices with\nadvanced sensors has enabled continuous real-time monitoring\nof physiological data. This research aims to use fog computing,\na decentralized computing approach, to introduce a system for\npredicting heart attacks based on data from these wearable\ndevices. The system features a custom Deep Learning (DL) model\nat the fog layer, allowing real-time analysis of health data without\nrelying on centralized cloud processing. The model obtained an\naccuracy of 90% which is a significant improvement than the\ntraditional models. This work contributes to the field of cloud\ncomputing in healthcare, showcasing the potential of fog-based\nsolutions for timely and context-aware heart attack prediction.\nSuccessful outcomes could lead to scalable and decentralized\nhealthcare systems, supporting proactive cardiac care and im-\nproving overall patient well-being.\nIndex Terms—Cloud Computing, Fog Computing, Heart At-\ntack, Deep Learning, Edge device\nI. INTRODUCTION\nCardiovascular diseases, including heart attacks, remain a\nsignificant cause of illness and mortality on a global scale.\n"
+      },
+      {
+        "name": "Clinical/Heart_attack/IOT_Based_Heart_Rate_Monitoring_System_Design_for_Heart_Attack_Detection.pdf",
+        "bytes": 391897,
+        "pages": 4,
+        "cover_excerpt": "IOT Based Heart Rate Monitoring System Design \nfor Heart Attack Detection\nSutha P Assistant \nProfessor, Biomedical Engineering \nDepartment PSNA College of Engineering \nand Technology\nDindigul, Tamilnadu, India \nsutha@psnacet.edu.in\nPeriyanan A Associate Professor\nBiomedical Engineering Department Sri \nRanganathar Institute of Engineering and \nTechnology Coimbatore, Tamilnadu, India\nperiyannan@sriet.ac.in\nMenaha R \nAssociate Professor\nDepartment of Information Technology\nSri Eshwar College of Engineering \nCoimbatore, Tamilnadu, India\nrmenahasenthil@gmail.com \nJayanthi VE Professor\nBiomedical Engineering Department PSNA College of \nEngineering and Technology\nDindigul, Tamilnadu, India\njayanthi.ramu@gmail.com\nGirish. B UG Scholar\nBiomedical Engineering Department PSNA College of \nEngineering and Technology\nDindigul, Tamilnadu, India \ngirishbalachandran20@gmail.com\nAbstract— In recent days, the human demise has increased \ndue to heart attack. An IOT based sensor system is proposed to \ndetect the heart rate of a person to increase their lifespan. To \nmeasure the heart rate, the heart beat sensor is interfaced with \na microcontroller. The threshold levels of heart beat is set by the \nuser with the help of a proposed mobile application. Based on \nthe patient age, heart beat limit is set and then the system starts \nmonitoring. When the heart beat goes beyond the range an alert \nmessage is sent to the care taker or Physician. Thus an alert of \nabnormal condition of the patient is sent immediately to the \nPhysician. So, the immediate care is taken and the person life is \nsaved. The developed system is tested and works well for all the \nage groups.\nKeywords— Heart rate, Sensor, Heart attack, Alert\nI.\nINTRODUCTION\nIn recent days, heart related problems are common. There \nare approx"
+      },
+      {
+        "name": "Clinical/Heart_attack/Machine_Learning_Approaches_for_Predicting_Heart_Attacks.pdf",
+        "bytes": 397544,
+        "pages": 6,
+        "cover_excerpt": "2024 7th International Conference on Contemporary Computing and Informatics (IC3I) \n44 \n979-8-3503-5006-7/24/$31.00 ©2024 IEEE \nMachine Learning Approaches For Predicting Heart \nAttacks \n \nRaunak Raj \nSchool of Computer Science and \nEngineering \nLovely Professional University \nPunjab, India \nraunak09raj@gmail.com \n \nVeerpal Kaur \nSchool of Computer Science and \nEngineering \nLovely Professional University \nPunjab, India \nkhaira.veerpal@gmail.com \n \nGagandeep Kaur \nChitkara University Institute of \nEngineering and Technology \nChitkara University \nPunjab, India \ngaganmalhotra1791@gmail.com\n \nAbstract— Heart attacks are the leading cause of deaths \nworldwide. However, diagnosing them can be difficult as their \nsymptoms can resemble those of other illnesses. There are \nseveral types of heart diseases, which makes identifying \nsymptoms challenging. Mistaking these symptoms for \nsomething else can be very harmful to the patient. Heart \ndisease is caused by various factors such as high bp, unhealthy \ndiet, smoking, and lack of physical activity. New approaches \nare required to address heart problems since more young \npeople are suffering from heart attacks, and current medical \ntools and diagnostic procedures are insufficient. This research \naims to investigate the use of Machine Learning (ML) \nalgorithms in heart attack prediction, emphasizing early \ndetection and thereby increasing life expectancy and \ndecreasing mortality rate. This research tries to determine the \nmost successful models for heart attack prediction by \nanalyzing KNN, Logistic Regression, XGBClassifier and \nExtraTreeClassifier approaches. It also discusses the impact \nof these technologies in changing healthcare practices. The \nwork synthesizes findings from 2016 to 2023, aiming to \nprovide a comprehensive ov"
+      },
+      {
+        "name": "Clinical/Heart_attack/Machine_Learning_Model_for_Heart_Disease_Detection_A_Comparative_Analysis_of_SVM_vs_KNN.pdf",
+        "bytes": 620281,
+        "pages": 5,
+        "cover_excerpt": "2024 International Conference on Electrical Electronics and Computing Technologies (ICEECT) \n \n \n979-8-3503-7809-2/24/$31.00 ©2024 IEEE \nMachine Learning Model for Heart Disease \nDetection: A Comparative Analysis of SVM vs KNN \nUttam Kumar Giri \nChitkara University School of Engineering \nand Technology, Chitkara University, \nHimachal Pradesh, India \nuttameast@gmail.comline   \n \n \n \nRamamani Tripathy \nChitkara University School of Engineering \nand Technology, Chitkara University, \nHimachal Pradesh, India \nramamani.tripathy@chitkarauniversity.edu.in \n \nMerry Saxena \nDepartment of Interdisciplinary Courses in \nEngineering, Chitkara University Institute of \nEngineering & Technology, Chitkara \nUniversity, Punjab, India \nmerry.saxena@chitkara.edu.in \n \n \nSrikanta Kumar Mohapatra \nChitkara University Institute of Engineering \nand Technology, \nChitkara University, Punjab, India \nsrikanta.2k7@gmail.com\nDibyahash Bordoloi \nDept of CSE, Graphic Era Hill University \nGraphic Era Deemed to be University \nDehradun, India \ndibyahash.cse@geu.ac.in \n \n \n \nPradeepta Kumar Sarangi \nChitkara University School of Engineering \nand Technology, Chitkara University  \nHimachal Pradesh, India \npradeeptasarangi@gmail.com \nAbstract—Abstract: Out of many critical medical issues, heart \ndisease is one that primarily impacts the cardiovascular system, \nincluding the heart and its associated organs. Individuals who \nsmoke, suffer from high blood pressure, have elevated \ncholesterol levels, maintain poor dietary habits, lack physical \nactivity, or are overweight or obese face a greater risk of \ndeveloping heart disease. The most frequently diagnosed \ncardiovascular condition is coronary artery disease (CAD), \nalthough other forms of heart disease include congestive heart \nfailure, arrhythmias, and congen"
+      },
+      {
+        "name": "Clinical/Heart_attack/Prediction_of_Heart_Disease_using_Machine_Learning_Technique.pdf",
+        "bytes": 569735,
+        "pages": 4,
+        "cover_excerpt": "2024 1st International Conference on Advances in Computing, Communication and Networking (ICAC2N) \nISBN: 979-8-3503-5681-6/24/$31.00©2024 IEEE                       507 \n \nPrediction of Heart Disease using Machine Learning \nTechnique \n     Shachi Mall \nAssociate Professor  \nSchool of Computer \nScience Engineering,  \nGalgotias University  \nGreater Noida, India \nshachimall@gmail.com \nJitendra Nath Singh \n        Professor \n       School of \nComputer Science \nGalgotias University  Gr. \nNoida, U.P \nsinghjn2000@gmail.com \nAnshika malik \nSchool of Computer \nScience Engineering,  \nGalgotias University  \nGreater Noida, India \nanshikaru@gmail.com \nLakshay Mahur \n4Department of \nComputer Science \nRaj Kumar Goel \nInstitute of Technology \nGhaziabad, U.P \nlakshfcs@rkgit.edu.in \nMyasar Mundher \nadnan  Department of \nComputer Science \nNajaf, Iraq The Islamic \nuniversityMaiser.month\ner@iunajaf.edu.iq \n \n \n \nAbstract— heart disease is a leading global cause of death, and \npredicting it is complex, requiring advanced expertise beyond \ndoctors' ease. The medical environment remains “Information \nrich” and “Information poor”. There is a lot of medical \ninformation available on the internet. However, there are no good \nanalytical tools for discovering relationships and patterns in the \ndata. Automated diagnostic systems offer greater efficiency and \ncost-effectiveness. This web application uses Cleveland Medical \nResearch Foundation and Kaggle heart disease data to predict the \nlikelihood of disease occurrence. The goal is to apply knowledge \nmining techniques to the dataset to extract hidden patterns \nimportant to heart disease and predict whether a patient has \nheart disease where heart disease is dedicated to something. \nModern technology struggles to process and analyze the massive \ndat"
+      },
+      {
+        "name": "Clinical/KneeInjuries/",
+        "bytes": 0
+      },
+      {
+        "name": "Clinical/KneeInjuries/A_Comprehensive_Review_of_Knee_Abnormalities_Detection_Current_Procedures_Outcomes_and_Prospects.pdf",
+        "bytes": 316459,
+        "pages": 7,
+        "cover_excerpt": "\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\t\u000b\f\r\u000e\t\u0003\u000f\t\u000e\r\t\u0010\u0003\u0005\u0011\u0003\u0012\u000b\t\t\u0003\u0002\u0013\u000b\u0005\b\u0006\u0014\u0015\r\u0016\r\t\f\u0003\n\u0017\t\u0016\t\u0018\u0016\r\u0005\u000b\u0003\u0004\u0019\b\b\t\u000b\u0016\u0003\u001a\b\u0005\u0018\t\u001b\u0019\b\t\f\u001c\u0003\u001d\u0019\u0016\u0018\u0005\u0006\t\f\u0003\u0014\u000b\u001b\u0003\u001a\b\u0005\f\u0007\t\u0018\u0016\f\u0003\n\u001e\u0014\u0019\u0015\r\u001f\u0003\u0002\b\u000e\r\u000b\u001b\u0013\n\u0014\r\u0003\u001a\u0014\b\t\u001f\n\u0003\n\u0017\b \u0003\u0017\r\u000e!\u0014\u001f\u0014\u000b\u0016\u0003\u001e\t\u000e\u0014\u0003\n\u0002\u0003\u0004\u0003\u0005\u0006\u0007\b\t\n\u0007\b\u000b\f\u0005\u0006\r\t\u000e\u0005\u0007\u000f\f\u0010\u0011\t\u000b\u0012\t\u0013\u000b\u0014\u0015\u000f\u0010\u0003\u0006\t\u0016\u0015\u0015\f\u0017\u0007\u0005\u0010\u0017\u000b\u0018\u0004\t\n\u0016\u0004\u0004\u000b\u0007\u0017\u0005\u0010\u0003\t\u0019\u0006\u000b\u0012\u0003\u0004\u0004\u000b\u0006\r\t\u000e\u0005\u0007\u000f\f\u0010\u0011\t\u000b\u0012\t\u0013\u000b\u0014\u0015\u000f\u0010\u0003\u0006\t\u0016\u0015\u0015\f\u0017\u0007\u0005\u0010\u0017\u000b\u0018\u0004\t\n\u001a\u0005\u0006\u001b\u0005\u001c\u0017\t\u001d\u0018\u0017\u001e\u0003\u0006\u0004\u0017\u0010\u0011\t\n\u001a\u0005\u0006\u001b\u0005\u001c\u0017\t\u001d\u0018\u0017\u001e\u0003\u0006\u0004\u0017\u0010\u0011\t\n\u0002\u0005\u001f \u000b\u0010\r\t!\u000f\u001f\u0005\u0006\u0005\u0010\r\t\"\u0018\u001c\u0017\u0005\t\n\u0002\u0005\u001f \u000b\u0010\r\t!\u000f\u001f\u0005\u0006\u0005\u0010\r\t\"\u0018\u001c\u0017\u0005\t\n\u0006\u0014\u0019\u0015\r\u001f\u0007\u0014\b\t\u001f\n\"#$%&'\u0006\u0014\r\u0015 \u0018\u0005\u0006\u0003\n\u001b\r\u000e!\u0014\u001f\u0014\u000b\u0016\u0006\t\u000e\u0014&'\u0006\u0014\r\u0015 \u0018\u0005\u0006\u0003\n\u0002\n\u0003\n\u0003\u0004\u0005\u0006\u0007\b\t\u0006\u0002\u0003\u0002\u0004\u0005\u0006\u0006\u0002\u0007\b\t\u0005\n\u000b\u0002\f\r\u0006\u0002\u000e\f\u000f\u0006\u0002\u0010\u0011\u0002\b\u0012\u0002\u0013\f\r\n\t\u0014\f\u0015\u0006\u0016\u0002\u0017\b\u0005\u0006\u0016\u0002\u0012\u0014\u0010\t\u000f\u0002\n\f\u0005\u000f\u0002\u0014\t\u0015\f\u000e\u0006\u0005\n\u000b\u0002\t\u0005\u0002\u0018\u0019\t\u0013\u0019\u0002\u000e\u0010\u000b\u0013\u0014\u0006\u000b\u0002\f\u0005\u000f\u0002\n\u0006\u0005\u000f\b\u0005\u000b\u0002\f\r\u0006\u0002\n\u0019\u0006\r\u0006\u0002\u0012\b\r\u0002\u0019\u0006\u0014\u0011\t\u0005\u0015\u0002\n\u001a\u0005\u0006\u0006\u0002\u0007\b\t\u0005\n\u000b\u0002\u000e\b\u001b\u0006\u000e\u0006\u0005\n\u001c\u0002\u0004\u0005\u0006\u0006\u0002\u0011\f\t\u0005\u000b\u0002\u0013\f\u0010\u000b\u0006\u000f\u0002\u000f\u0010\u0006\u0002\n\b\u0002\t\u0005\u0007\u0010\r\u001d\u0016\u0002\r\u0006\u0011\u0006\f\n\u0006\u000f\u0002\n\u000b\n\r\u0006\u000b\u000b\u0002 \b\u0005\u0002 \u001a\u0005\u0006\u0006\u0002 \b\r\u0002 \f\u0015\t\u0005\u0015\u001c\u0002 \u0004\u0005\u0006\u0006\u0002 \f\u0017\u0005\b\r\u000e\f\u0014\t\n\t\u0006\u000b\u0002 \b\r\u0002 \t\u0005\u0007\u0010\r\u001d\u0002 \u0013\f\u0005\u0002 \u0017\u0006\u0002\n\u000f\t\f\u0015\u0005\b\u000b\u0006\u000f\u0002 \u0010\u000b\t\u0005\u0015\u0002 \u000f\t\u0012\u0012\u0006\r\u0006\u0005\n\u0002 \u000e\u0006\n\u0019\b\u000f\b\u0014\b\u0015\t\u0006\u000b\u0002 \u0014\t\u001a\u0006\u0002 \u001e\u0003\u001f !\u0016\u0002 \"#\u0002 \u000b\u0013\f\u0005\u0016\u0002\n \r\n\u0019\r\b\u000b\u0013\b\u0011\u001d\u0002 \b\r\u0002 $\u001f%\u001c\u0002 %\u0005\u0002 \b\u0010\r\u0002 \u000b\u0010\r\u001b\u0006\u001d\u0016\u0002 \u0018\u0006\u0002 \n\u0019\b\r\b\u0010\u0015\u0019\u0014\u001d\u0002 \f\u0005\f\u0014\u001d&\u0006\u000f\u0002\n\u000b\u0006\u001b\u0006\r\f\u0014\u0002\r\u0006\u0013\u0006\u0005\n\u0002\r\u0006\u000b\u0006\f\r\u0013\u0019\u0002\n\b\u0002\t\u0005\u001b\u0006\u000b\n\t\u0015\f\n\u0006\u0002\n\u0019\u0006\u0002\u0014\f\u0005\u000f\u000b\u0013\f\u0011\u0006\u0002\b\u0012\u0002\u0011\r\u0006\u000f\t\u0013\n\t\u001b\u0006\u0002\n\u000e\b\u000f\u0006\u0014\t\u0005\u0015\u0016\u0002 \f\u0002 \u0013\b\u000e\u0011\r\u0006\u0019\u0006\u0005\u000b\t\u001b\u0006\u0002 \f\u0005\f\u0014\u001d\u000b\t\u000b\u0002 \b\u0012\u0002 \u0013\u0010\r\r\u0006\u0005\n\u0002 \u0014\t\n\u0006\r\f\n\u0010\r\u0006\u0016\u0002\n\u0006\u001b\f\u0014\u0010\f\n\t\u0005\u0015\u0002 \n\r\u0006\u0005\u000f\u000b\u0016\u0002 \f\u0005\u000f\u0002 \u000e\u0006\n\u0019\b\u000f\b\u0014\b\u0015\t\u0006\u000b\u001c\u0002 '\u0006\u0002 \t\u000f\u0006\u0005\n\t\u0012\t\u0006\u000f\u0002 \n\u0019\f\n\u0002 \u000f\u0006\u0006\u0011\u0003\n\u0014\u0006\f\r\u0005\t\u0005\u0015\u0002\u000e\b\u000f\u0006\u0014\u000b\u0002\u000b\u0019\b\u0018\u0013\f\u000b\u0006\u000f\u0002\f\u001b\u0006\r\f\u0015\u0006\u0002\f\u0013\u0013\u0010\r\f\u0013\u001d\u0002\u0012\b\r\u0002\u0011\r\u0006\u000f\t\u0013\n\t\u0005\u0015\u0002\n\u0019\f\n\u0002\n\u001a\u0005\u0006\u0006\u0002\t\u000b\u0002\u0005\b\r\u000e\f\u0014\u0002\b\r\u0002\f\u0017\u0005\b\r\u000e\f\u0014\u0002\t\u000b\u0002\r\f\u0005\u0015\u0006\u000f\u0002\u0012\r\b\u000e\u0002()\u001c*+\u0002\n\b\u0002,-+\u001c\u0002%\u0005\u0002\n\u0019\t\u000b\u0002\n\r\u0006\u001b\t\u0006\u0018\u0002\u0011\f\u0011\u0006\r\u0016\u0002\u0018\u0006\u0002\f\u0014\u000b\b\u0002\u0019\t\u0015\u0019\u0014\t\u0015\u0019\n\u0002\u000b\u0006\u001b\u0006\r\f\u0014\u0002\u0014\t\u000e\t\n\f\n\t\b\u0005\u000b\u0002\u0014\t\u001a\u0006\u0002\u0013\u0019\f\u0014\u0014\u0006\u0005\u0015\u0006\u000b\u0002\n\u0012\b\r\u0002 \u0015\u0006\u0005\u0006\r\f\u0014\t&\f\n\t\b\u0005\u0002 \b\u0012\u0002 \u000e\b\u000f\u0006\u0014\u000b\u0002 \t\u0005\u0002 \u000f\t\u0012\u0012\u0006\r\u0006\u0005\n\u0002 \u0013\u0006\u0005\n\u0006\r\u000b\u0016\u0002 \u0017\t\f\u000b\u0005\u0006\u000b\u000b\u0002 \t\u0005\u0002\n\u001b\u0006\r\t\u0012\t\u0013\f\n\t\b\u0005\u0016\u0002\u0014\f\u0013\u001a\u0002\b\u0012\u0002\u000e\u0010\u0014\n\t\u0003\u0013\u0014\f\u000b\u000b\t\u0012\t\u0013\f\n\t\b\u0005\u0002\u000b\n\u0010\u000f\t\u0006\u000b\u0016\u0002 \u0010\u0005\f\u001b\f\t\u0014\f\u0017\t\u0014\t\n\u001d\u0002 \b\u0012\u0002\n\u000f\f\n\f\u0002 \f\u0005\u000f\u0002 \u000b\u0010\u0017\u0007\u0006\u0013\n\t\u001b\t\n\u001d\u0002 \b\u0012\u0002 \u0015\r\b\u0010\u0005\u000f\u0003\n\r\u0010\n\u0019\u001c\u0002 '\u0006\u0002 \f\u0014\u000b\b\u0002 \u0011\r\b\u0011\b\u000b\u0006\u000f\u0002 \u0005\u0002\n./\u0011\u0014\f\t\u0005\f\u0017\u0014\u0006\u0002 \n\n\u0006\u0005\n\t\b\u0005\u0002 0\f\u000b\u0006\u000f\u0002 1\u0006\u0006\u0011\u0002 2\u0006\f\r\u0005\t\u0005\u0015\u0002 \u0004\u0005\u0006\u0006\u0002 \u0005\b\u000e\f\u0014\t\u0006\u000b\u0002\n3\r\u0006\u000f\t\u0013\n\t\b\u0005\u0002\n$\b\u000f\u0006\u0014\u0002\n\u0018\t\n\u0019\u0002\n.\u0005\u000b\u0006\u000e\u0017\u0014\u0006\u0002\n2\u0006\f\r\u0005\t\u0005\u0015\u0002\n \u0014\u0015\b\r\t\n\u0019\u000e\u000b\u0002\n\u0012\r\f\u000e\u0006\u0018\b\r\u001a\u001c\u00024\u0006\r\u0006\u0016\u0002\u000e\u0010\u0014\n\t\u0003\u000e\b\u000f\f\u0014\u0002\u000f\u0006\u0006\u0011\u0002\u0014\u0006\f\r\u0005\t\u0005\u0015\u0002\u000e\b\u000f\u0006\u0014\u0002\f\r\u0013\u0019\t\n\u0006\u0013\n\u0010\r\u0006\u0002\n\t\u000b\u0002\u000f\u0006\u000b\t\u0015\u0005\u0006\u000f\u0002\n\b\u0002\u0019\f\u0005\u000f\u0014\u0006\u0002\f\u0005\u000f\u0002\u0014\u0006\f\r\u0005\u0002\u0012\r\b\u000e\u0002\u000e\u0010\u0014\n\t\u0011\u0014\u0006\u0002\n\u001d\u0011\u0006\u000b\u0002\b\u0012\u0002\u000f\f\n\f\u0002\t\u0005\u0011\u0010\n\u000b\u001c\u0002\n'\u0006\u0002\f\u0013\u0019\t\u0006\u001b\u0006\u000f\u0002-*\u001c5*+\u0002\f\u0013\u0013\u0010\r\f\u0013\u001d\u0002\u0018\t\n\u0019\u0002\u0004\f\u0015\u0015\u0014\u0006\u0002\u001a\u0005\u0006\u0006\u0002\u000f\f\n\f\u000b\u0006\n\u001c\u0002\n\u0002\n\n\u000b\f\r\u000e\u0002 \u000f\r\u0007\u0010\u0005\u0002 \u0011\u0002 \u0012\u000b\r\r\u0002 \b\u0004\u000b\u0013\u0007\u0010\b\u0014\u0015\u0006\u0015\r\u0005\u0016\u0002 \f\r\r\u0017\u0002 \u0014\r\b\u0007\u000b\u0015\u000b\u0018\u0016\u0002 \f\u0015\b\u0018\u000b\u0013\u0005\u0006\u0015\t\u0002\n\u0010\u0013\f\r\u0014\u0005\u0016\u0002\u0017\r\u0007\u0019"
+      },
+      {
+        "name": "Clinical/KneeInjuries/Design_and_Analysis_of_a_Knee_Exoskeleton_with_Self-alignment_Capability.pdf",
+        "bytes": 4153166,
+        "pages": 6,
+        "cover_excerpt": "Design and Analysis of a Knee Exoskeleton with\nSelf-alignment Capability\nHuijuan Lu1, Tingting Su2∗, Guotao Li3, Xu Liang4, Shengda Liu3, Wendong Xiao5,\nShoulie Xie6, Jie Zhang1, and Guangping He1\nAbstract—The knee exoskeleton can assist patients for knee\nrehabilitation exercises. In this paper, a novel knee exoskeleton\nwith self-alignment capability is proposed. First, the structure\nof the knee exoskeleton is designed, which has one active and\nfour passive joints. The four passive joints are used to realize\nthe self-alignment function of the knee exoskeleton. Second, the\nkinematic model is established and analysed. Third, simulations\nare conducted to validate the rotation ranges of human knee\nand hip joints. The simulation results demonstrate that the knee\nexoskeleton can meet the rehabilitation needs of the patients.\nIndex Terms—knee exoskeleton, structure design, kinematics\nI. INTRODUCTION\nThe knee joint is one of the largest and most complex joints\nin the human body. It not only participates in daily activities\nand strenuous sports, but also plays a role in mitigating\nshocks and keeping the body balanced. During lower limb\nexercise, the knee joint is susceptible to injury because it\nis subjected to higher forces compared with other joints.\nAccording to literature [1], the knee joint is the joint with the\nhighest morbidity rate in the whole body. The main causes\nof knee injuries include sports trauma and stroke [2], and\nknee injuries will seriously affect the patient’s activity of daily\nlife and psychological health. The common knee rehabilitation\nprogrammes include medication, massage and surgery, etc.\nMedication and surgery are extremely expensive, and the level\nof medical expertise varies, resulting in limited rehabilitation\neffects [3]. Massage usually requires a"
+      },
+      {
+        "name": "Clinical/KneeInjuries/Design_and_control_of_a_novel_powered_wearable_knee_exoskeleton_for_lower_limb_rehabilitation.pdf",
+        "bytes": 2079476,
+        "pages": 6,
+        "cover_excerpt": "Design and control of a novel powered wearable knee exoskeleton for\nlower limb rehabilitation\nKui Du1,2, Yang Yu2,3 and Lin Dong2,3#\nAbstract— Lower limb rehabilitation is a crucial aspect of\nrecovery following various injuries and musculoskeletal dis-\norders. Traditional techniques, while effective, can be time-\nconsuming and require intensive therapist involvement. Pow-\nered wearable knee exoskeletons offer a promising solution\nby providing targeted torque assistance during rehabilitation\nexercises. This paper presents the design and control of a\nnovel powered wearable knee exoskeleton specifically tailored\nfor lower limb rehabilitation applications. The exoskeleton\nprioritizes user comfort, safety, and ease of use. We delve into\nthe mechanical design considerations for achieving lightweight\nconstruction, comfortable wearability, and suitable range of\nmotion. Subsequently, we elaborate on the control algorithm\nemployed on the knee exoskeleton, focusing on its ability to\nimprove rehabilitation efficiency.\nI. INTRODUCTION\nLower limb rehabilitation is a critical aspect of recovery\nfollowing a wide range of injuries and musculoskeletal\ndisorders, including stroke, ligament tears, and osteoarthritis\n[1]. These conditions, which can affect individuals of all\nages, can significantly limit mobility, reduce quality of life,\nand impose a substantial burden on healthcare systems. Tra-\nditional rehabilitation techniques, such as physiotherapy and\ntherapeutic exercises, while effective, often require intensive\ntherapist involvement and can be time-consuming [2]. This\ncan lead to challenges with patient adherence and limit the\nfrequency and intensity of rehabilitation sessions.\nPowered wearable knee exoskeletons offer a promising\nsolution to address these limitations and enhance lo"
+      },
+      {
+        "name": "Clinical/KneeInjuries/Development_of_a_Highlighting_System_for_Surgical_Instruments_in_Total_Knee_Arthroplasty.pdf",
+        "bytes": 2076690,
+        "pages": 9,
+        "cover_excerpt": "Received 8 April 2024, accepted 3 June 2024, date of publication 6 June 2024, date of current version 14 June 2024.\nDigital Object Identifier 10.1109/ACCESS.2024.3410323\nDevelopment of a Highlighting System\nfor Surgical Instruments in Total\nKnee Arthroplasty\nRYUSEI KASAI\n, (Student Member, IEEE), AND KOUKI NAGAMUNE\n, (Senior Member, IEEE)\nGraduate School Engineering, University of Fukui, Fukui 910-8507, Japan\nCorresponding author: Ryusei Kasai (mf230099@g.u-fukui.ac.jp)\nThis work was supported by Teijin Nakashima Medical Company.\nABSTRACT Currently, there is a shortage of nurses worldwide. In total knee arthroplasty, many surgical\ninstruments of similar shapes and sizes are available. As a result, medical accidents have occurred due to\nerrors in the selection of these instruments. To solve these problems, several surgical instrument detection\nsystems using object detection methods have been developed. However, these studies do not mention how\nto display the detection results. It is inefficient for scrub nurses to look at the display to check the detection\nresults, and mistakes can occur. Therefore, in this study, we have developed a system that detects surgical\ninstruments and uses the detection results to highlight the instruments using a projector like projection\nmapping. This study also describes a method for creating training data and an inference method to reduce\nthe additional training time required when the number of detection targets is increased. In the experiments,\nwe verify the effectiveness of the calibration system for the camera and projector. In addition, object detection\nis performed on a surgical instrument to verify the accuracy of the system. The results showed that the error\nafter calibration is 0.15 cm. The IoU and F-measure of object detection are "
+      },
+      {
+        "name": "Clinical/KneeInjuries/Knee_Fracture_Surgery_Monitoring_for_Advanced_Post-Operative_System_Using_IOT.pdf",
+        "bytes": 498134,
+        "pages": 4,
+        "cover_excerpt": "Knee Fracture Surgery Monitoring for Advanced \nPost-Operative System using IOT \n \nDenny .A Franklin Joshuah \nDepartment of Biomedical Engineering, \nKarpagam Academy of Higher Education, \nCoimbatore, Tamil Nadu, India \ndennyfranklin27@gmail.com \n \nSaravanan .V \nDepartment of Biomedical Engineering, \nKarpagam Academy of Higher Education, \nCoimbatore, Tamil Nadu, India \nsaravanan08082001@gmail.com \n \nArun Kumar .M \nAssistant Professor \nDepartment of Biomedical Engineering \nKarpagam Academy of Higher Education, \nCoimbatore, Tamil Nadu, India \narunnkumarrm@gmail.com \nAbstract—An accurate assessment of joint kinematic patients, \nwho walk with neuromuscular and musculoskeletal disorders \nmay provide essential data regarding modifications of disease \nstatus and the efficacy of pharmacological treatments and \nrehabilitation regimens. This research study introduces a cost \neffective wearable device for monitoring the long term \nconditions of joint kinematics patients. The respective data are \ntaken from 17 people, who are made to walk at three different \nspeeds while wearing a retractable string sensor integrated with \ntwo points on different regions of the knee joint. The proposed \nRandom Forest (RF) algorithm is used to measure the \ncalibrated sensor inputs. Hence, a wearable device can \naccurately measure the flexibility of knee angles at different \nwalking speeds during locomotion. This type of wearable \ntechnology has a potential to monitor the patients conditions, \nrehabilitation \nprogrammes, \nand \nimprove \ntherapeutic \noutcomes. \nKeywords—Internet of Things (IoT), sensors, implant, knee, \nprosthesis \n \nI. \nINTRODUCTION \n \n \nAccurate joint angle monitoring in the ambulatory \nsituation may be beneficial for patients with neuromuscular \nand musculoskeletal diseases such strok"
+      }
+    ]
+  },
+  {
+    "name": "DataSource-Cisco.txt",
+    "bytes": 2204,
+    "sha256": "d3633caba063ebe91bbda7eca99589b712fbb8041fc49f03111798a72470597d",
+    "text": "1. Cisco Catalyst 8300 Series Edge Platforms\nhttps://www.cisco.com/c/en/us/products/routers/catalyst-8300-series-edge-platforms/index.html\n2. Cisco Catalyst 8200 Series Edge Platforms\nhttps://www.cisco.com/c/en/us/products/routers/catalyst-8200-series-edge-platforms/index.html\n3. Cisco Catalyst 8000V Edge Software\nhttps://www.cisco.com/c/en/us/products/routers/catalyst-8000v-edge-software/index.html\n4. Cisco 4000 Series Integrated Services Routers (ISR)\nhttps://www.cisco.com/c/en/us/products/routers/4000-series-integrated-services-routers-isr/index.html\n5. Cisco ASR 1000 Series Aggregation Services Routers\nhttps://www.cisco.com/c/en/us/products/routers/asr-1000-series-aggregation-services-routers/index.html\n\n\n1. Cisco Catalyst 8300 Series Edge Platforms\nhttps://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8300-series-edge-platforms/datasheet-c78-744088.pdf\nCovers processor, memory, interfaces, IPsec throughput, SD-WAN, and hardware specifications. \n\nCisco\n\n\n\n2. Cisco Catalyst 8200 Series Edge Platforms\nhttps://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8200-series-edge-platforms/nb-06-cat8200-series-edge-plat-ds-cte-en.pdf\n20-page datasheet covering CPU, RAM, storage, network interfaces, VPN performance, security, and licensing. \n\nCisco\n\n\n\n3. Cisco Catalyst 8000V Edge Software\nhttps://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8000v-edge-software/catalyst-8000v-edge-software-ds.pdf\n19-page datasheet covering virtual router architecture, cloud deployment, networking, and SD-WAN capabilities. \n\nCisco\n\n\n\n4. Cisco 4000 Series Integrated Services Routers (ISR)\nhttps://www.cisco.com/c/en/us/products/collateral/routers/4000-series-integrated-services-routers-isr/data_sheet-c78-732542.pdf\nCovers ISR hardware models, WAN interfaces, memory, throughput, modular expansion, and security. \n\nCisco\n\n\n\n5. Cisco ASR 1000 Series Aggregation Services Routers\nhttps://www.cisco.com/c/en/us/products/collateral/routers/asr-1000-series-aggregation-services-routers/datasheet-c78-731632.pdf\nCovers aggregation performance, route processors, Ethernet interfaces, redundancy, and WAN services. \n\nCisco\n"
+  },
+  {
+    "name": "FoodSecurity.zip",
+    "bytes": 16975804,
+    "sha256": "cb0c7e1f20bc8151ca458923472d7bbaddb358fb029c9fd421a8b7d77d290f5a",
+    "members": [
+      {
+        "name": "FoodSecurity/",
+        "bytes": 0
+      },
+      {
+        "name": "FoodSecurity/SOFI-2023.pdf",
+        "bytes": 13154335,
+        "pages": 316,
+        "cover_excerpt": "FOOD SECURITY \nAND NUTRITION \nIN THE WORLD\nTHE STATE OF \nURBANIZATION, AGRIFOOD SYSTEMS \nTRANSFORMATION AND HEALTHY DIETS \nACROSS THE RURAL–URBAN CONTINUUM\n2023\n"
+      },
+      {
+        "name": "FoodSecurity/SOFI-2024.pdf",
+        "bytes": 9383015,
+        "pages": 286,
+        "cover_excerpt": "FOOD SECURITY \nAND NUTRITION \nIN THE WORLD\nTHE STATE OF \nFINANCING TO END HUNGER, \nFOOD INSECURITY AND MALNUTRITION \nIN ALL ITS FORMS\n2024\n"
+      }
+    ]
+  },
+  {
+    "name": "Google GCP.txt",
+    "bytes": 313,
+    "sha256": "2a5b5c830a62574642e60fbba116b1190f9bb97278f8b69e1ec12c872e838a1a",
+    "text": "Google GCP\nhttps://docs.cloud.google.com/mcp/overview\nMCP\nhttps://cloud.google.com/discover/what-is-model-context-protocol?_gl=1*pmxwj5*_ga*MTkwNDE4NTYwNS4xNzc4MDEzOTM5*_ga_WH2QY8WWF5*czE3OTIyNTg0MzkkbzckZzEkdDE3OTIyNTg0NjUkajM0JGwwJGgw\nRAG\nhttps://cloud.google.com/use-cases/retrieval-augmented-generation\n"
+  },
+  {
+    "name": "Retail.zip",
+    "bytes": 11917,
+    "sha256": "e4a045d5ad7e4688685f63317015eeeeb90aac7189e673aa91fd848cade8a7a4",
+    "members": [
+      {
+        "name": "Retail/",
+        "bytes": 0
+      },
+      {
+        "name": "Retail/CMPE256_Hackathon_market_basket_analysis_Release.csv",
+        "bytes": 177086,
+        "columns": [
+          "transaction_id",
+          "item_1",
+          "item_2",
+          "item_3",
+          "item_4",
+          "item_5"
+        ],
+        "preview_rows": 5
+      }
+    ]
+  },
+  {
+    "name": "SJSU_CMPE256_Hackathon_20261017_v7_Release.pdf",
+    "bytes": 501743,
+    "sha256": "e7033a8d1f412adfd7d65f21b4f1df1deff61963dd7caf1460374dbba1c0f01f",
+    "pages": 11
+  },
+  {
+    "name": "UnitedStatesSecuritiesandExchangeCommission(SEC).zip",
+    "bytes": 7750618,
+    "sha256": "6b048a621c98be24c1be8bcdc64ae429efdd6fea61f4c3d00d3cb7711d1390fb",
+    "members": [
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/",
+        "bytes": 0
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Agilent/",
+        "bytes": 0
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Agilent/b5098e8e-5716-4b35-8d8e-84dbdab516b1.pdf",
+        "bytes": 1927835,
+        "pages": 217,
+        "cover_excerpt": "Table of Contents            \nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\n_____________________________________________________________\nForm 10-K\n_____________________________________________________________\n(MARK ONE) \n☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934. \nFor the fiscal year ended October 31, 2025 \nor \n☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934. \nFor transition period from to\nCommission File Number: 001-15405\n_____________________________________________________________\nAgilent Technologies, Inc.\n(Exact name of registrant as specified in its charter)\nDelaware\n77-0518772\n(State or other jurisdiction of incorporation or organization)\n(IRS Employer Identification No.)\nAddress of principal executive offices: 5301 Stevens Creek Blvd., Santa Clara, California 95051\nRegistrant's telephone number, including area code: (800) 227-9770\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each Class\nTrading Symbol\nName of each Exchange on which registered\nCommon Stock, $0.01 par value\nA\nNew York Stock Exchange\nSecurities registered pursuant to Section 12(g) of the Act: None\n_____________________________________________________________\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes ☐ No ☒\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes ☐ No ☒\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter\nperiod that the registrant was required "
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Alphabet/",
+        "bytes": 0
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Alphabet/0ca59726-c36c-45fe-a114-e147f8cd7237.pdf",
+        "bytes": 1340363,
+        "pages": 108,
+        "cover_excerpt": "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\n___________________________________________\nFORM 10-K\n___________________________________________\n(Mark One)\n☒\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2024\nOR\n☐\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from              to             .\nCommission file number: 001-37580\n___________________________________________\nAlphabet Inc.\n(Exact name of registrant as specified in its charter)\n___________________________________________\nDelaware\n61-1767919\n(State or other jurisdiction of incorporation or organization)\n(I.R.S. Employer Identification No.)\n1600 Amphitheatre Parkway\nMountain View, CA 94043\n(Address of principal executive offices, including zip code)\n(650) 253-0000\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class\nTrading Symbol(s)\nName of each exchange on which registered\nClass A Common Stock, $0.001 par value\nGOOGL\nNasdaq Stock Market LLC\n(Nasdaq Global Select Market)\nClass C Capital Stock, $0.001 par value\nGOOG\nNasdaq Stock Market LLC\n(Nasdaq Global Select Market)\nSecurities registered pursuant to Section 12(g) of the Act:\nTitle of each class\nNone\n___________________________________________\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.    Yes  ☒    No  ☐\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.    Yes  ☐   No  ☒\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed b"
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Alphabet/8873e505-7403-4c46-b377-81d814482cbb.pdf",
+        "bytes": 1262804,
+        "pages": 104,
+        "cover_excerpt": "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\n___________________________________________\nFORM 10-K\n___________________________________________\n(Mark One)\n☒\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\nOR\n☐\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from              to             .\nCommission file number: 001-37580\n___________________________________________\nAlphabet Inc.\n(Exact name of registrant as specified in its charter)\n___________________________________________\nDelaware\n61-1767919\n(State or other jurisdiction of incorporation or organization)\n(I.R.S. Employer Identification No.)\n1600 Amphitheatre Parkway\nMountain View, CA 94043\n(Address of principal executive offices, including zip code)\n(650) 253-0000\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class\nTrading Symbol(s)\nName of each exchange on which registered\nClass A Common Stock, $0.001 par value\nGOOGL\nNasdaq Stock Market LLC\n(Nasdaq Global Select Market)\nClass C Capital Stock, $0.001 par value\nGOOG\nNasdaq Stock Market LLC\n(Nasdaq Global Select Market)\n2.375% Senior Notes due 2028\n—\nNasdaq Stock Market LLC\n2.500% Senior Notes due 2029\n—\nNasdaq Stock Market LLC\n2.875% Senior Notes due 2031\n—\nNasdaq Stock Market LLC\n3.000% Senior Notes due 2033\n—\nNasdaq Stock Market LLC\n3.125% Senior Notes due 2034\n—\nNasdaq Stock Market LLC\n3.375% Senior Notes due 2037\n—\nNasdaq Stock Market LLC\n3.500% Senior Notes due 2038\n—\nNasdaq Stock Market LLC\n4.000% Senior Notes due 2044\n—\nNasdaq Stock Market LLC\n3.875% Senior Notes due 2045\n—\nNasdaq Stock Market LLC\n4.000% Sen"
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Cisco/",
+        "bytes": 0
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Cisco/028fbac9-c5ba-409b-83ce-dfee9c17fdbc.pdf",
+        "bytes": 2639797,
+        "pages": 285,
+        "cover_excerpt": "Table of Contents\nUNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549 \n_____________________________________\nFORM 10-K\n(Mark One)\n☒\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended July 25, 2026\nor\n☐\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____ to ____\nCommission file number 001-39940 \n_____________________________________\nCISCO SYSTEMS, INC.\n(Exact name of registrant as specified in its charter)\nDelaware\n77-0059951\n(State or other jurisdiction of\nincorporation or organization)\n(IRS Employer\nIdentification No.)\n170 West Tasman Drive\n95134-1706\nSan Jose, California\n(Address of principal executive offices)\n(Zip Code)\nRegistrant’s telephone number, including area code: (408) 526-4000\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class:\nTrading Symbol(s)\nName of each exchange on which registered\nCommon Stock, par value $0.001 per share\nCSCO\nThe Nasdaq Stock Market LLC\nSecurities registered pursuant to Section 12(g) of the Act: None\n_____________________________________ \nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.    ☒  Yes    ☐ No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.    ☐  Yes    ☒  No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such\nshorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.   "
+      },
+      {
+        "name": "UnitedStatesSecuritiesandExchangeCommission(SEC)/Cisco/6c821d1a-cf4e-4310-9801-df9399aa701b.pdf",
+        "bytes": 1322115,
+        "pages": 123,
+        "cover_excerpt": "Table of Contents\nUNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549 \n_____________________________________\nFORM 10-K\n(Mark One)\n☒\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended July 26, 2025\nor\n☐\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____ to ____\nCommission file number 001-39940 \n_____________________________________\nCISCO SYSTEMS, INC.\n(Exact name of registrant as specified in its charter)\nDelaware\n77-0059951\n(State or other jurisdiction of\nincorporation or organization)\n(IRS Employer\nIdentification No.)\n170 West Tasman Drive\n95134-1706\nSan Jose, California\n(Address of principal executive offices)\n(Zip Code)\nRegistrant’s telephone number, including area code: (408) 526-4000\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class:\nTrading Symbol(s)\nName of each exchange on which registered\nCommon Stock, par value $0.001 per share\nCSCO\nThe Nasdaq Stock Market LLC\nSecurities registered pursuant to Section 12(g) of the Act: None\n_____________________________________ \nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.    ☒  Yes    ☐ No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.    ☐  Yes    ☒  No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such\nshorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.   "
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "tests": 54,
+  "failures": 0,
+  "errors": 0,
+  "live_openai": "not_run_no_credentials",
+  "semantic_embeddings": "not_run_no_credentials",
+  "ui": "All five pages rendered; cart interactions, guest chat, named isolation, rerun history, follow-up submission and Clear Chat verified",
+  "live_gemini": "not_run_no_credentials",
+  "gemini_sdk_contract": "mock_tested_including_manager_specialists_validation_and_failure_handling"
+}
