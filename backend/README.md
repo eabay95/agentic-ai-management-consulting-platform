@@ -23,10 +23,10 @@ powershell -ExecutionPolicy Bypass -File .\run.ps1
 ```
 
 The launcher creates `backend/.venv`, installs dependencies, validates the key is
-configured, indexes the configured SEC and CSR PDFs, and starts the API at
+configured, indexes the configured SEC/CSR PDFs and supported clinical/technology documents, and starts the API at
 `http://127.0.0.1:8000/docs`. Ingestion computes embeddings locally; unchanged
 chunks are skipped. Missing configured PDFs or a failed step stop startup.
-Technology and clinical documents still require separate ingestion.
+Clinical/technology ingestion reports reference lists, structured CSVs and unreadable files as skipped.
 
 For subsequent runs when dependencies and documents are already set up:
 
@@ -72,8 +72,8 @@ store_documents(chunks, "sec")
 ```
 
 Repeat for Agilent. Verify each PDF's actual reporting period before labeling it.
-Repeated ingestion currently adds duplicates; storage is the existing shared RAG
-implementation.
+The low-level store_documents example adds documents directly. Use the ingestion
+scripts for stable IDs and repeatable indexing.
 
 ```python
 from agents.sec import SECAgent
@@ -118,3 +118,74 @@ From the project root, run `powershell -ExecutionPolicy Bypass -File .\run.ps1`
 to install the new dependency, re-index, and start the API. Do not use
 `-SkipInstall` or `-SkipIngestion` for the first run after this change.
 The previous `uv.lock` must be regenerated with `uv lock` before locked installs.
+
+## Added clinical and technology documents
+
+The root launcher now also runs `ingest_domains.py`. To ingest these domains alone:
+
+```powershell
+Set-Location backend
+.\.venv\Scripts\python.exe ingest_domains.py
+```
+
+Clinical and technology PDF/TXT content is indexed into its own collection with
+stable IDs and PDF page metadata. Repeat runs skip existing chunks; modified
+files replace obsolete chunks after successful ingestion. Trial CSV files remain
+preserved as structured data rather than being embedded as unstructured evidence.
+TXT reference lists containing URLs are explicitly skipped: a URL description is
+not a source document. Download the actual approved Cisco/Google documentation
+into `data/technology` and Agilent instrument documentation into `data/clinical`,
+then rerun ingestion. This script does not fetch or fabricate linked content.
+
+
+## Technology response and source setup
+
+Technology answers are normalized from Gemini text blocks to plain text; the
+chat renderer also handles structured responses safely. Empty retrieval returns
+`insufficient_evidence` without a model call. Source excerpts, PDF pages and
+public URLs are preserved. The pipeline uses a local evidence-only prompt and
+does not require a LangSmith prompt download at startup.
+
+The professor-listed Google Cloud RAG page can be downloaded and indexed with:
+
+```powershell
+Set-Location backend
+.\.venv\Scripts\python.exe fetch_technology.py
+.\.venv\Scripts\python.exe ingest_domains.py --domain technology
+```
+
+The fetcher only permits exact HTTPS references in `data/technology/*.txt`,
+rejects redirects, limits downloads to 25 MB and saves source URL provenance.
+Use `--url` to select a different professor-listed reference. It does not crawl
+or substitute descriptions for content. Other Cisco/Google sources still need
+fetching before questions requiring their documentation can be answered.
+
+After code changes, restart the server and refresh the browser to load the
+updated renderer. Run `python -m unittest discover -s tests -v` for regression
+tests; the renderer regression test also requires Node.js.
+
+
+## Reading all professor reference links
+
+Normal startup now fetches every exact HTTPS URL in the root clinical/technology
+TXT reference lists before indexing. Agilent references go into clinical even if
+Agilent.txt is in the technology directory. Google/Cisco content goes into technology.
+Gemini receives matching passages retrieved from that content; a URL in a prompt
+is not a guarantee that its contents have been retrieved.
+
+Successful downloads are cached. `data/public_source_report.json` records each
+source's domain, availability and any error. Blocked pages (including HTTP 403)
+remain unavailable; no content is invented and redirects are not followed.
+Use `-RefreshSources` with the launcher to download cached sources again,
+`-SkipSourceFetch` to index only local content, or `-SkipIngestion` to skip
+both fetching and indexing. To refresh sources separately:
+
+```powershell
+Set-Location backend
+.\.venv\Scripts\python.exe fetch_technology.py --all
+.\.venv\Scripts\python.exe ingest_domains.py
+```
+
+The browser's network error means it could not reach the consulting endpoint,
+not that a professor URL failed. Keep the API running, open the page from the
+server URL rather than a local HTML file, and refresh after a server reload.

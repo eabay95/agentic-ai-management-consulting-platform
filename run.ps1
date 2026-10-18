@@ -1,6 +1,8 @@
 param(
     [switch]$SkipInstall,
     [switch]$SkipIngestion,
+    [switch]$SkipSourceFetch,
+    [switch]$RefreshSources,
     [ValidateRange(1, 65535)]
     [int]$Port = 8000,
     [string]$PythonCommand = "python"
@@ -39,9 +41,16 @@ try {
     Invoke-CheckedPython -Arguments @("-c", "from llm import get_api_key; get_api_key()")
 
     if (-not $SkipIngestion) {
-        Write-Host "Indexing SEC and CSR PDFs locally (first run downloads the embedding model)..."
+        if (-not $SkipSourceFetch) {
+            Write-Host "Reading professor reference lists and fetching public documentation (successful downloads are cached)..."
+            $sourceArguments = @("fetch_technology.py", "--all")
+            if ($RefreshSources) { $sourceArguments += "--refresh" }
+            Invoke-CheckedPython -Arguments $sourceArguments
+        }
+        Write-Host "Indexing SEC, CSR, clinical and technology documents locally (first run downloads the embedding model)..."
         Invoke-CheckedPython -Arguments @("ingest_sec.py")
         Invoke-CheckedPython -Arguments @("ingest_csr.py")
+        Invoke-CheckedPython -Arguments @("ingest_domains.py")
     }
 
     Write-Host "API documentation: http://127.0.0.1:$Port/docs"
@@ -51,3 +60,4 @@ try {
 finally {
     Pop-Location
 }
+

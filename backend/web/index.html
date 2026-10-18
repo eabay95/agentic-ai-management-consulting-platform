@@ -29,7 +29,7 @@ function element(tag,text,className){const node=document.createElement(tag);if(t
 function message(role,text){document.querySelector('#welcome')?.remove();const box=element('article',undefined,'message '+role);box.append(element('div',role==='user'?'You':'Consulting assistant','label'));if(text)box.append(element('div',text,'answer'));messages.append(box);return box;}
 // Render a small Markdown subset with DOM nodes only. Model HTML is never executed.
 function inline(parent,text){
- const tokens=/(\*\*([^*]+)\*\*|`([^`]+)`|(\[(?:[SC]\d+)(?:,\s*[SC]\d+)*\]))/g;
+ const tokens=/(\*\*([^*]+)\*\*|`([^`]+)`|(\[(?:[SCT]\d+)(?:,\s*[SCT]\d+)*\]))/g;
  let end=0;
  for(const match of text.matchAll(tokens)){
   parent.append(document.createTextNode(text.slice(end,match.index)));
@@ -38,7 +38,17 @@ function inline(parent,text){
  }
  parent.append(document.createTextNode(text.slice(end)));
 }
+function answerText(value){
+ if(typeof value==='string')return value;
+ if(Array.isArray(value))return value.map(answerText).filter(Boolean).join('\n');
+ if(value&&typeof value==='object'&&(!value.type||value.type==='text')){
+  if(typeof value.text==='string')return value.text;
+  if(value.text&&typeof value.text.value==='string')return value.text.value;
+ }
+ return '';
+}
 function formattedAnswer(text){
+ text=answerText(text)||'No readable answer was returned.';
  const root=element('div',undefined,'answer formatted');let paragraph=[],list=null;
  function flush(){if(paragraph.length){const p=element('p');inline(p,paragraph.join(' '));root.append(p);paragraph=[];}}
  for(const line of text.replace(/\r/g,'').split('\n')){
@@ -62,7 +72,7 @@ function render(data,box){
   box.append(formattedAnswer(result.answer||'No answer was returned.'));
   if(result.status==='insufficient_evidence')box.append(element('p','No evidence was retrieved for this specialist.','note'));
   const sources=result.sources||[];
-  if(sources.length){const details=element('details');details.append(element('summary',`Sources (${sources.length})`));for(const [index,source] of sources.entries()){const row=element('div',undefined,'source');const title=[source.id?`[${source.id}]`:`Source ${index+1}`,source.company,source.document||source.source||'Unknown document',source.reporting_period||source.report_year,(source.page??source.pdf_page)!=null?`PDF page ${source.page??source.pdf_page}`:null].filter(Boolean).join(' · ');row.append(element('strong',title));if(source.excerpt||source.passage)row.append(element('p',source.excerpt||source.passage,'excerpt'));details.append(row);}box.append(details);}
+  if(sources.length){const details=element('details');details.append(element('summary',`Sources (${sources.length})`));for(const [index,source] of sources.entries()){const row=element('div',undefined,'source');const title=[source.id?`[${source.id}]`:`Source ${index+1}`,source.company,source.document||source.source||'Unknown document',source.reporting_period||source.report_year,(source.page??source.pdf_page)!=null?`PDF page ${source.page??source.pdf_page}`:null].filter(Boolean).join(' · ');row.append(element('strong',title));if(typeof source.source_url==='string'&&/^https?:\/\//i.test(source.source_url)){const link=element('a','Open source');link.href=source.source_url;link.target='_blank';link.rel='noopener noreferrer';row.append(element('br'),link);}if(source.excerpt||source.passage)row.append(element('p',source.excerpt||source.passage,'excerpt'));details.append(row);}box.append(details);}
  }
  if(data.missing_information?.length)box.append(element('p','Helpful context: '+data.missing_information.join(' '),'note'));
  if(data.pending_domains?.length)box.append(element('p','Some specialists could not finish: '+data.pending_domains.map(d=>names[d]||d).join(', '),'note'));
@@ -72,7 +82,7 @@ form.addEventListener('submit',async event=>{
  busy=true;send.disabled=true;clear.disabled=true;message('user',question);input.value='';status.textContent='Consulting the relevant specialists…';status.scrollIntoView({block:'nearest'});
  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),180000);
  try{const response=await fetch('/consult',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question}),signal:controller.signal});if(!response.ok)throw new Error(`Request failed (${response.status}). Please try again or check the server logs.`);const data=await response.json();render(data,message('assistant'));}
- catch(error){const text=error.name==='AbortError'?'The request timed out. The server may still be processing it. Try again shortly.':error.message;message('assistant',text).classList.add('error');input.value=question;}
+ catch(error){const text=error.name==='AbortError'?'The request timed out. The server may still be processing it. Try again shortly.':error instanceof TypeError?'Cannot reach the consulting server. Keep the server terminal running, reopen the app at its http://127.0.0.1 address, and try again. This connection error does not indicate whether a source URL is accessible.':error.message;message('assistant',text).classList.add('error');input.value=question;}
  finally{clearTimeout(timer);busy=false;send.disabled=false;clear.disabled=false;status.textContent='';input.focus();}
 });
 input.addEventListener('input',()=>input.setCustomValidity(''));

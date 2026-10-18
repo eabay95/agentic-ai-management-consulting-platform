@@ -1,0 +1,135 @@
+[
+  {
+    "url": "https://www.agilent.com/en/product/cell-analysis/real-time-cell-metabolic-analysis",
+    "domain": "clinical",
+    "reference_file": "Agilent.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.agilent.com/about/newsroom/presrel/2023/07mar-ca23010.html",
+    "domain": "clinical",
+    "reference_file": "Agilent.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/digital-pathology",
+    "domain": "clinical",
+    "reference_file": "Agilent.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners",
+    "domain": "clinical",
+    "reference_file": "Agilent.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/digital-pathology/digital-pathology-scanners/nanozoomer-slide-scanner-system-4370282",
+    "domain": "clinical",
+    "reference_file": "Agilent.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.agilent.com/en/product/special-stains",
+    "domain": "clinical",
+    "reference_file": "Agilent.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/catalyst-8300-series-edge-platforms/index.html",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/catalyst-8200-series-edge-platforms/index.html",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/catalyst-8000v-edge-software/index.html",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/4000-series-integrated-services-routers-isr/index.html",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/routers/asr-1000-series-aggregation-services-routers/index.html",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8300-series-edge-platforms/datasheet-c78-744088.pdf",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8200-series-edge-platforms/nb-06-cat8200-series-edge-plat-ds-cte-en.pdf",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/catalyst-8000v-edge-software/catalyst-8000v-edge-software-ds.pdf",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/4000-series-integrated-services-routers-isr/data_sheet-c78-732542.pdf",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.cisco.com/c/en/us/products/collateral/routers/asr-1000-series-aggregation-services-routers/datasheet-c78-731632.pdf",
+    "domain": "technology",
+    "reference_file": "DataSource-Cisco.txt",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://docs.cloud.google.com/mcp/overview",
+    "domain": "technology",
+    "reference_file": "Google GCP.txt",
+    "status": "available",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\ee44c4dad68545e5da9c.txt"
+  },
+  {
+    "url": "https://cloud.google.com/discover/what-is-model-context-protocol?_gl=1*pmxwj5*_ga*MTkwNDE4NTYwNS4xNzc4MDEzOTM5*_ga_WH2QY8WWF5*czE3OTIyNTg0MzkkbzckZzEkdDE3OTIyNTg0NjUkajM0JGwwJGgw",
+    "domain": "technology",
+    "reference_file": "Google GCP.txt",
+    "status": "available",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9fc7f1fdcc084e7f56a2.txt"
+  },
+  {
+    "url": "https://cloud.google.com/use-cases/retrieval-augmented-generation",
+    "domain": "technology",
+    "reference_file": "Google GCP.txt",
+    "status": "available",
+    "path": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9ee7abb8cc6547c45967.txt"
+  }
+]
