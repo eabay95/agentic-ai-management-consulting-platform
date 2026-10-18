@@ -8,6 +8,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from agents.manager import ManagerAgent
+from agents.cross import CrossAgent
 
 
 app = FastAPI()
@@ -69,6 +70,10 @@ def get_technology_agent():
     from agents.technology import TechnologyAgent
 
     return TechnologyAgent()
+
+@lru_cache(maxsize=1)
+def get_cross_agent():
+    return CrossAgent()
 
 
 def run_specialist(domain: str, question: str, report_year: int | None):
@@ -163,17 +168,71 @@ def consult(request: CSRQuestionRequest):
             if agent_results.get(domain, {}).get("status") in incomplete_statuses
         ]
 
-        if pending_domains:
-            status = "partial"
-        else:
-            status = "completed"
+
+        # Check whether synthesis is actually required.
+        requires_cross = (
+            routing.get("requires_cross_domain_reasoning", False)
+            and len(domains) >= 2
+        )
+
+        synthesis = None
+
+        if requires_cross:
+            try:
+                synthesis = get_cross_agent().run(
+                    question=question,
+                    agent_results=agent_results,
+                )
+            except Exception:
+                logger.exception("Cross-agent synthesis failed")
+                synthesis = {
+                    "status": "error",
+                    "answer": "Cross-agent synthesis could not be completed.",
+                    "used_domains": [],
+                    "skipped_domains": {},
+                    "sources": [],
+                }
+
+        # Do not mistake insufficient evidence for a completed answer.
+        incomplete_statuses = {
+            "error",
+            "insufficient_evidence",
+            "uncited_needs_review",
+        }
+
+        pending_domains = [
+            domain
+            for domain in domains
+            if agent_results.get(domain, {}).get("status")
+            in incomplete_statuses
+            or not agent_results.get(domain, {}).get("sources")
+            or not agent_results.get(domain, {}).get("answer", "").strip()
+        ]
+
+        # A synthesis error also makes the consultation incomplete.
+        synthesis_incomplete = (
+            requires_cross
+            and (
+                synthesis is None
+                or synthesis.get("status")
+                in {"error", "insufficient_evidence"}
+            )
+        )
+
+        status = (
+            "partial"
+            if pending_domains or synthesis_incomplete
+            else "completed"
+        )
 
         return {
             **routing,
             "status": status,
             "agent_results": agent_results,
             "pending_domains": pending_domains,
+            "synthesis": synthesis,
         }
+
 
     except Exception:
         logger.exception("Consulting request failed")
