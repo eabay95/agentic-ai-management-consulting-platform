@@ -1,12 +1,18 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+import logging
+from functools import lru_cache
+from typing import Literal
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
 from agents.manager import ManagerAgent
+from agents.csr import CSRAgent
 
 
 app = FastAPI()
 
 manager = ManagerAgent()
+logger = logging.getLogger(__name__)
 
 
 class QuestionRequest(BaseModel):
@@ -23,3 +29,41 @@ def main():
 @app.post("/route")
 def route_question(request: QuestionRequest):
     return manager.route(request.question)
+
+
+# CSR API integration by Raheem Saeed
+class CSRQuestionRequest(BaseModel):
+    question: str = Field(min_length=3, max_length=4000)
+    report_year: Literal[2023, 2024] | None = None
+
+
+@lru_cache(maxsize=1)
+def get_csr_agent():
+    return CSRAgent()
+
+
+@app.post("/csr")
+def ask_csr(request: CSRQuestionRequest):
+    question = request.question.strip()
+
+    if len(question) < 3:
+        raise HTTPException(
+            status_code=422,
+            detail="Enter a question with at least 3 non-space characters.",
+        )
+
+    try:
+        return get_csr_agent().run(
+            question=question,
+            report_year=request.report_year,
+        )
+    except Exception:
+        logger.exception("CSR request failed")
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                "The CSR request could not be completed. "
+                "Check the server logs, API configuration, "
+                "and CSR document ingestion."
+            ),
+        ) from None
