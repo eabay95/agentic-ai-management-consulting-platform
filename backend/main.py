@@ -67,3 +67,62 @@ def ask_csr(request: CSRQuestionRequest):
                 "and CSR document ingestion."
             ),
         ) from None
+        
+# Manager-to-CSR orchestration by Raheem Saeed
+@app.post("/consult")
+def consult(request: CSRQuestionRequest):
+    question = request.question.strip()
+
+    if len(question) < 3:
+        raise HTTPException(
+            status_code=422,
+            detail="Enter a question with at least 3 non-space characters.",
+        )
+
+    try:
+        routing = manager.route(question)
+        domains = routing["domains"]
+
+        if not domains:
+            return {
+                **routing,
+                "agent_results": {},
+                "pending_domains": [],
+            }
+
+        agent_results = {}
+
+        if "csr" in domains:
+            agent_results["csr"] = get_csr_agent().run(
+                question=question,
+                report_year=request.report_year,
+            )
+
+        pending_domains = [
+            domain for domain in domains
+            if domain not in agent_results
+        ]
+
+        if pending_domains:
+            status = "partial" if agent_results else "pending_specialists"
+        else:
+            status = agent_results["csr"]["status"]
+
+        return {
+            **routing,
+            "status": status,
+            "agent_results": agent_results,
+            "pending_domains": pending_domains,
+        }
+
+    except Exception:
+        logger.exception("Consulting request failed")
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                "The consulting request could not be completed. "
+                "Check the server logs, API configuration, "
+                "and CSR document ingestion."
+            ),
+        ) from None
+
