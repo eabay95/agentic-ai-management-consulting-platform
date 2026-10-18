@@ -6,7 +6,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 from agents.manager import ManagerAgent
-from agents.csr import CSRAgent
 
 
 app = FastAPI()
@@ -39,7 +38,50 @@ class CSRQuestionRequest(BaseModel):
 
 @lru_cache(maxsize=1)
 def get_csr_agent():
+    from agents.csr import CSRAgent
+
     return CSRAgent()
+
+
+@lru_cache(maxsize=1)
+def get_clinical_agent():
+    from agents.clinical import ClinicalAgent
+
+    return ClinicalAgent()
+
+
+@lru_cache(maxsize=1)
+def get_sec_agent():
+    from agents.sec import SECAgent
+
+    return SECAgent()
+
+
+@lru_cache(maxsize=1)
+def get_technology_agent():
+    from agents.technology import TechnologyAgent
+
+    return TechnologyAgent()
+
+
+def run_specialist(domain: str, question: str, report_year: int | None):
+    """Run the specialist that corresponds to a Manager-selected domain."""
+    if domain == "clinical":
+        return get_clinical_agent().run(question)
+
+    if domain == "sec":
+        return get_sec_agent().run(question)
+
+    if domain == "technology":
+        return get_technology_agent().run(question)
+
+    if domain == "csr":
+        return get_csr_agent().run(
+            question=question,
+            report_year=report_year,
+        )
+
+    raise ValueError(f"Unsupported specialist domain: {domain}")
 
 
 @app.post("/csr")
@@ -92,21 +134,32 @@ def consult(request: CSRQuestionRequest):
 
         agent_results = {}
 
-        if "csr" in domains:
-            agent_results["csr"] = get_csr_agent().run(
-                question=question,
-                report_year=request.report_year,
-            )
+        for domain in domains:
+            try:
+                agent_results[domain] = run_specialist(
+                    domain,
+                    question,
+                    request.report_year,
+                )
+            except Exception as error:
+                logger.exception("Specialist request failed: %s", domain)
+                agent_results[domain] = {
+                    "domain": domain,
+                    "status": "error",
+                    "question": question,
+                    "error": str(error),
+                }
 
+        incomplete_statuses = {"error", "insufficient_evidence"}
         pending_domains = [
             domain for domain in domains
-            if domain not in agent_results
+            if agent_results.get(domain, {}).get("status") in incomplete_statuses
         ]
 
         if pending_domains:
-            status = "partial" if agent_results else "pending_specialists"
+            status = "partial"
         else:
-            status = agent_results["csr"]["status"]
+            status = "completed"
 
         return {
             **routing,

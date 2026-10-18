@@ -97,3 +97,7 @@ class ClinicalAgent:
             "answer": response.output_text.strip(),
             "sources": sources,
         }
+
+    def run(self, question: str, *, k: int = 8) -> dict[str, Any]:
+        """Run the clinical specialist using the common agent interface."""
+        return self.analyze(question, k=k)

@@ -97,3 +97,7 @@ class SECAgent:
             "answer": answer,
             "sources": sources,
         }
+
+    def run(self, question: str, *, k: int = 8) -> dict[str, Any]:
+        """Run the SEC specialist using the common agent interface."""
+        return self.analyze(question, k=k)

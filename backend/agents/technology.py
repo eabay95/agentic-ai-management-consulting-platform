@@ -24,8 +24,13 @@ class TechnologyAgent:
             for doc in response.get("context", [])
         ]
         return {
+            "status": "completed",
             "domain": self.domain,
             "question": question,
             "answer": response.get("answer", ""),
             "sources": sources
         }
+
+    def analyze(self, question: str) -> dict:
+        """Compatibility alias for callers that use analyze()."""
+        return self.run(question)
