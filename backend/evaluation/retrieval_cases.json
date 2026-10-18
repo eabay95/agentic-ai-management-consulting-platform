@@ -1,0 +1,8 @@
+﻿[
+ {"id":"ret-mcp","domain":"technology","question":"What is Model Context Protocol (MCP) in Google Cloud?","sources":["9fc7f1fdcc084e7f56a2.txt","ee44c4dad68545e5da9c.txt"],"pages":[]},
+ {"id":"ret-rag","domain":"technology","question":"What is retrieval augmented generation (RAG) according to Google Cloud?","sources":["9ee7abb8cc6547c45967.txt"],"pages":[]},
+ {"id":"ret-power","domain":"technology","question":"Describe Cisco Catalyst 8300 dual power supplies and redundancy.","sources":["datasheet-c78-744088.pdf"],"pages":[3,4,16]},
+ {"id":"ret-cisco-risk","domain":"sec","question":"What supply chain disruption risks does Cisco disclose for fiscal 2025?","sources":["Cisco-2025-Annual-Report.pdf"],"pages":[30,31,32]},
+ {"id":"ret-food23","domain":"csr","question":"What major drivers of food insecurity does SOFI 2023 identify: conflict, climate and economic slowdowns?","year":2023,"sources":["SOFI-2023.pdf"],"pages":[9,10,20]},
+ {"id":"ret-food24","domain":"csr","question":"What drivers of food insecurity does SOFI 2024 identify, including unaffordable healthy diets?","year":2024,"sources":["SOFI-2024.pdf"],"pages":[9,20,23]}
+]

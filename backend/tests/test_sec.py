@@ -9,6 +9,7 @@ from agents.sec import SECAgent
 class SECAgentTests(unittest.TestCase):
     def test_empty_collection_does_not_call_model(self):
         store = Mock()
+        store.get.return_value = {"metadatas": []}
         store.similarity_search.return_value = []
         client = Mock()
         result = SECAgent(client, store).analyze("What are Cisco's risks?")
@@ -17,6 +18,7 @@ class SECAgentTests(unittest.TestCase):
 
     def test_evidence_and_page_numbers_are_preserved(self):
         store = Mock()
+        store.get.return_value = {"metadatas": []}
         store.similarity_search.return_value = [SimpleNamespace(
             page_content="Competition may reduce margins.",
             metadata={"source": "cisco-2025.pdf", "page": 9},
@@ -29,7 +31,7 @@ class SECAgentTests(unittest.TestCase):
         request = client.models.generate_content.call_args.kwargs
         self.assertEqual(json.loads(request["contents"])["evidence"], result["sources"])
         self.assertIn("system_instruction", request["config"])
-        store.similarity_search.assert_called_once_with("Cisco risks", k=5)
+        store.similarity_search.assert_called_once_with("Cisco risks", k=5, filter={"company": {"$in": ["Cisco"]}})
 
     def test_invalid_input_is_rejected_before_retrieval(self):
         agent = SECAgent(vector_store=Mock())

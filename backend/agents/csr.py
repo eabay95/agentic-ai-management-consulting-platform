@@ -6,11 +6,14 @@ from typing import Any
 from llm import get_model, get_gemini_client
 
 from rag.vector_store import get_vector_store
+from rag.citations import check_citations
 
 
 CSR_INSTRUCTIONS = """
 You are the Corporate Social Responsibility Agent for an
 enterprise management consulting platform.
+Address only CSR and food-security evidence. Peer specialists cover hardware and
+SEC filings; do not ask the customer to obtain those documents for your CSR analysis.
 
 Use the supplied SOFI report passages to answer questions about
 food security, nutrition, sustainability, and related CSR actions.
@@ -114,6 +117,10 @@ class CSRAgent:
                 "Question must contain between 3 and 4000 characters."
             )
 
+        if report_year is None:
+            requested = set(re.findall(r'\b(2023|2024)\b', question))
+            if len(requested) == 1:
+                report_year = int(next(iter(requested)))
         documents = self.retrieve(question, report_year)
 
         if not documents:
@@ -171,7 +178,12 @@ class CSRAgent:
         if not answer:
             raise RuntimeError("The model returned an empty answer.")
 
-        cited_ids = set(re.findall(r"\[(S\d+)\]", answer))
+        citation_check = check_citations(answer, sources)
+        if not citation_check['valid']:
+            return dict(domain='csr', status='citation_error', question=question, report_year=report_year,
+                        answer='The CSR answer was withheld because it lacked valid source citations.',
+                        sources=sources, citation_check=citation_check)
+        cited_ids = set(citation_check['cited_ids'])
         valid_ids = {source["id"] for source in sources}
 
         if cited_ids - valid_ids:
@@ -191,12 +203,5 @@ class CSRAgent:
             "report_year": report_year,
             "answer": answer,
             "sources": sources,
-            "citation_check": {
-                "cited_ids": sorted(cited_ids),
-                "note": (
-                    "Citation labels were checked against retrieved "
-                    "sources. Review the passages to verify that "
-                    "they support the claims."
-                ),
-            },
+            "citation_check": citation_check,
         }

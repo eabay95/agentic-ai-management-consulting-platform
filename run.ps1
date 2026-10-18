@@ -3,6 +3,8 @@ param(
     [switch]$SkipIngestion,
     [switch]$SkipSourceFetch,
     [switch]$RefreshSources,
+    [switch]$Reload,
+    [switch]$CheckOnly,
     [ValidateRange(1, 65535)]
     [int]$Port = 8000,
     [string]$PythonCommand = "python"
@@ -22,6 +24,32 @@ function Invoke-CheckedPython {
 
 Push-Location -LiteralPath $backendPath
 try {
+    $appUrl = "http://127.0.0.1:$Port"
+    $runningApp = $null
+    try {
+        $runningApp = Invoke-RestMethod -Uri "$appUrl/health" -TimeoutSec 2 -ErrorAction Stop
+    } catch {
+        # No healthy consulting server at this port; check whether it can be bound.
+    }
+    if ($runningApp.message -eq "Management Consulting Platform is running") {
+        Write-Host "The consulting app is already running: $appUrl"
+        Write-Host "Open that address in your browser. No second server was started."
+        Write-Host "To apply .env changes, stop the existing server first, then run this command again."
+        return
+    }
+    $portProbe = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, $Port)
+    $portProbe.Server.ExclusiveAddressUse = $true
+    try {
+        $portProbe.Start()
+    } catch {
+        throw "Cannot use local port $Port. It is occupied or blocked by Windows. Try -Port $($Port + 1)."
+    } finally {
+        $portProbe.Stop()
+    }
+    if ($CheckOnly) {
+        Write-Host "Port $Port is available for the consulting app. No setup or server startup was performed."
+        return
+    }
     if (-not (Test-Path -LiteralPath $venvPython)) {
         Write-Host "Creating backend/.venv (Python 3.14+ required)..."
         & $PythonCommand -c "import sys; sys.exit(0 if sys.version_info >= (3, 14) else 'Python 3.14 or later is required.')"
@@ -46,6 +74,7 @@ try {
             $sourceArguments = @("fetch_technology.py", "--all")
             if ($RefreshSources) { $sourceArguments += "--refresh" }
             Invoke-CheckedPython -Arguments $sourceArguments
+            Invoke-CheckedPython -Arguments @("fetch_sec.py")
         }
         Write-Host "Indexing SEC, CSR, clinical and technology documents locally (first run downloads the embedding model)..."
         Invoke-CheckedPython -Arguments @("ingest_sec.py")
@@ -53,9 +82,12 @@ try {
         Invoke-CheckedPython -Arguments @("ingest_domains.py")
     }
 
-    Write-Host "API documentation: http://127.0.0.1:$Port/docs"
+    Write-Host "Consulting chat: $appUrl/"
+    Write-Host "API documentation: $appUrl/docs"
     Write-Host "Press Ctrl+C to stop the server."
-    Invoke-CheckedPython -Arguments @("-m", "uvicorn", "main:app", "--reload", "--host", "127.0.0.1", "--port", "$Port")
+    $serverArguments = @("-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", "$Port")
+    if ($Reload) { $serverArguments += "--reload" }
+    Invoke-CheckedPython -Arguments $serverArguments
 }
 finally {
     Pop-Location

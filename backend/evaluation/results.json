@@ -1,0 +1,374 @@
+{
+  "timestamp_utc": "2026-10-18T20:17:35.785753+00:00",
+  "model": "gemini-flash-latest",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "retrieval": {
+    "k": 5,
+    "mean_source_recall_at_k": 1.0,
+    "mean_labeled_page_recall_at_k": 0.6666666666666666,
+    "cases": [
+      {
+        "id": "ret-mcp",
+        "source_recall_at_k": 1.0,
+        "labeled_page_recall_at_k": null,
+        "retrieved": [
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\ee44c4dad68545e5da9c.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\ee44c4dad68545e5da9c.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9fc7f1fdcc084e7f56a2.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9fc7f1fdcc084e7f56a2.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\ee44c4dad68545e5da9c.txt",
+            "page": 0
+          }
+        ]
+      },
+      {
+        "id": "ret-rag",
+        "source_recall_at_k": 1.0,
+        "labeled_page_recall_at_k": null,
+        "retrieved": [
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9ee7abb8cc6547c45967.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9ee7abb8cc6547c45967.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9ee7abb8cc6547c45967.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9ee7abb8cc6547c45967.txt",
+            "page": 0
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\data\\technology\\public_web\\9ee7abb8cc6547c45967.txt",
+            "page": 0
+          }
+        ]
+      },
+      {
+        "id": "ret-power",
+        "source_recall_at_k": 1.0,
+        "labeled_page_recall_at_k": 0.6666666666666666,
+        "retrieved": [
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\documents\\technology\\datasheet-c78-744088.pdf",
+            "page": 16
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\documents\\technology\\datasheet-c78-744088.pdf",
+            "page": 17
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\documents\\technology\\datasheet-c78-744088.pdf",
+            "page": 16
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\documents\\technology\\datasheet-c78-744088.pdf",
+            "page": 17
+          },
+          {
+            "source": "C:\\Users\\James\\OneDrive\\Desktop\\vscode files\\agentic-ai-management-consulting-platform\\backend\\documents\\technology\\datasheet-c78-744088.pdf",
+            "page": 4
+          }
+        ]
+      },
+      {
+        "id": "ret-cisco-risk",
+        "source_recall_at_k": 1.0,
+        "labeled_page_recall_at_k": 0.6666666666666666,
+        "retrieved": [
+          {
+            "source": "Cisco-2025-Annual-Report.pdf",
+            "page": 31
+          },
+          {
+            "source": "Cisco-2025-Annual-Report.pdf",
+            "page": 31
+          },
+          {
+            "source": "Cisco-2025-Annual-Report.pdf",
+            "page": 31
+          },
+          {
+            "source": "Cisco-2025-Annual-Report.pdf",
+            "page": 30
+          },
+          {
+            "source": "Cisco-2025-Annual-Report.pdf",
+            "page": 37
+          }
+        ]
+      },
+      {
+        "id": "ret-food23",
+        "source_recall_at_k": 1.0,
+        "labeled_page_recall_at_k": 0.6666666666666666,
+        "retrieved": [
+          {
+            "source": "SOFI-2023.pdf",
+            "page": 9
+          },
+          {
+            "source": "SOFI-2023.pdf",
+            "page": 31
+          },
+          {
+            "source": "SOFI-2023.pdf",
+            "page": 173
+          },
+          {
+            "source": "SOFI-2023.pdf",
+            "page": 20
+          },
+          {
+            "source": "SOFI-2023.pdf",
+            "page": 44
+          }
+        ]
+      },
+      {
+        "id": "ret-food24",
+        "source_recall_at_k": 1.0,
+        "labeled_page_recall_at_k": 0.6666666666666666,
+        "retrieved": [
+          {
+            "source": "SOFI-2024.pdf",
+            "page": 20
+          },
+          {
+            "source": "SOFI-2024.pdf",
+            "page": 33
+          },
+          {
+            "source": "SOFI-2024.pdf",
+            "page": 98
+          },
+          {
+            "source": "SOFI-2024.pdf",
+            "page": 9
+          },
+          {
+            "source": "SOFI-2024.pdf",
+            "page": 33
+          }
+        ]
+      }
+    ],
+    "limitation": "Small developer-labeled source/page set, not exhaustive passage relevance labels."
+  },
+  "recommendation_ranking": {
+    "precision_at_1": 1.0,
+    "mean_reciprocal_rank": 1.0,
+    "cases": [
+      {
+        "query": "Cisco Catalyst 8300 power supply redundancy and failover",
+        "expected_first": "power",
+        "ranked_ids": [
+          "power",
+          "mcp"
+        ],
+        "precision_at_1": 1.0,
+        "reciprocal_rank": 1.0
+      },
+      {
+        "query": "Google Cloud MCP model context protocol tools integration",
+        "expected_first": "mcp",
+        "ranked_ids": [
+          "mcp",
+          "power"
+        ],
+        "precision_at_1": 1.0,
+        "reciprocal_rank": 1.0
+      }
+    ],
+    "limitation": "Two labeled fixed-candidate scenarios test semantic ranking, not live recommendation business value."
+  },
+  "routing": {
+    "exact_match_accuracy": null,
+    "micro_precision": null,
+    "micro_recall": null,
+    "micro_f1": null,
+    "cases": [
+      {
+        "id": "route-mcp",
+        "expected": [
+          "technology"
+        ],
+        "predicted": [
+          "technology"
+        ],
+        "exact": true,
+        "error": null
+      },
+      {
+        "id": "route-router",
+        "expected": [
+          "technology"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-sec",
+        "expected": [
+          "sec"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-agilent",
+        "expected": [
+          "sec"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-food23",
+        "expected": [
+          "csr"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-food24",
+        "expected": [
+          "csr"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-war",
+        "expected": [
+          "csr"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-clinical",
+        "expected": [
+          "clinical"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-lab",
+        "expected": [
+          "clinical"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      },
+      {
+        "id": "route-cross",
+        "expected": [
+          "csr",
+          "sec",
+          "technology"
+        ],
+        "predicted": [],
+        "exact": false,
+        "error": "ClientError"
+      }
+    ],
+    "status": "incomplete_api_errors",
+    "completed_cases": 1,
+    "total_cases": 10,
+    "exact_match_on_completed_cases": 1.0,
+    "api_limitation": "Gemini returned 429 RESOURCE_EXHAUSTED; incomplete routing results cannot establish model accuracy.",
+    "snapshot_note": "Saved live routing run predates the clinical domain guard; rerun live evaluation when API quota is available."
+  },
+  "live_answers": [
+    {
+      "question": "What is Model Context Protocol (MCP) according to the Google Cloud documentation?",
+      "error": "HTTPException",
+      "limitation": "Live answer generation blocked by Gemini API quota during this run."
+    },
+    {
+      "question": "For a food-security nonprofit, should we pilot Cisco Catalyst 8300 networking considering documented power-supply resilience, Cisco fiscal 2025 financial risks, and SOFI 2024 food access priorities?",
+      "error": "HTTPException",
+      "limitation": "Live answer generation blocked by Gemini API quota during this run."
+    }
+  ],
+  "regression_tests": {
+    "tests": 62,
+    "failures": 0,
+    "errors": 0,
+    "status": "passed",
+    "command": "python -B -m unittest discover -s tests -v"
+  },
+  "human_quality_review": {
+    "status": "pending",
+    "metrics": [
+      "factual groundedness",
+      "recommendation relevance",
+      "completeness",
+      "clarity"
+    ],
+    "rubric": "Score 1-5 per answer, cite supporting source pages, record reviewer and rationale. Do not treat structural checks as response-quality ratings."
+  },
+  "limitations": [
+    "Small developer-authored suites are not independent held-out benchmarks.",
+    "Model confidence is not calibrated accuracy. Citation identity is not claim entailment.",
+    "Unknown costs, clinical outcomes and equipment compatibility remain unknown."
+  ],
+  "automated_quality_review": {
+    "timestamp_utc": "2026-10-18T20:20:42.264538+00:00",
+    "cases": [
+      {
+        "status": "not_run",
+        "reason": "Live answer unavailable."
+      },
+      {
+        "status": "not_run",
+        "reason": "Live answer unavailable."
+      }
+    ],
+    "limitation": "Model judgments are not human ratings, calibrated accuracy or proof of business value."
+  },
+  "source_coverage": {
+    "technology_datasheets": 5,
+    "technology_web_sources": 3,
+    "clinical_readable_papers": 13,
+    "clinical_title_metadata": "Hash-verified against cover text; original filenames preserved.",
+    "sec_filings": [
+      "Alphabet fiscal 2024",
+      "Agilent fiscal 2025",
+      "Cisco fiscal 2025"
+    ],
+    "csr_reports": [
+      "SOFI 2023",
+      "SOFI 2024"
+    ]
+  },
+  "live_cross_domain_fix": "Focused queries, retained technical findings and all-domain citation coverage are regression-tested; no new live Gemini answer generated in this verification."
+}

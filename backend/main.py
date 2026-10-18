@@ -9,6 +9,8 @@ from pydantic import BaseModel, Field
 
 from agents.manager import ManagerAgent
 from agents.cross import CrossAgent
+from agents.tasks import build_specialist_tasks
+from recommendations.planner import RecommendationPlanner, advice_requested
 
 
 app = FastAPI()
@@ -42,6 +44,9 @@ def route_question(request: QuestionRequest):
 class CSRQuestionRequest(BaseModel):
     question: str = Field(min_length=3, max_length=4000)
     report_year: Literal[2023, 2024] | None = None
+    requirements: str = Field(default='', max_length=4000)
+    recommendation_weights: dict[str, float] | None = None
+    mandatory_constraints: list[str] = Field(default_factory=list, max_length=20)
 
 
 @lru_cache(maxsize=1)
@@ -74,6 +79,11 @@ def get_technology_agent():
 @lru_cache(maxsize=1)
 def get_cross_agent():
     return CrossAgent()
+
+
+@lru_cache(maxsize=1)
+def get_recommendation_planner():
+    return RecommendationPlanner()
 
 
 def run_specialist(domain: str, question: str, report_year: int | None):
@@ -145,12 +155,13 @@ def consult(request: CSRQuestionRequest):
             }
 
         agent_results = {}
+        specialist_tasks = build_specialist_tasks(question, domains)
 
         for domain in domains:
             try:
                 agent_results[domain] = run_specialist(
                     domain,
-                    question,
+                    specialist_tasks[domain],
                     request.report_year,
                 )
             except Exception as error:
@@ -193,11 +204,23 @@ def consult(request: CSRQuestionRequest):
                     "sources": [],
                 }
 
+        recommendations = None
+        if advice_requested(question):
+            try:
+                recommendations = get_recommendation_planner().run(
+                    question, agent_results, request.requirements,
+                    request.recommendation_weights, request.mandatory_constraints)
+            except Exception:
+                logger.exception('Recommendation planning failed')
+                recommendations = dict(status='error', ranked=[], held=[], rejected=[],
+                                       limitations=['Proposal ranking could not be completed; specialist evidence remains available.'])
+
         # Do not mistake insufficient evidence for a completed answer.
         incomplete_statuses = {
             "error",
             "insufficient_evidence",
             "uncited_needs_review",
+            "citation_error",
         }
 
         pending_domains = [
@@ -215,13 +238,13 @@ def consult(request: CSRQuestionRequest):
             and (
                 synthesis is None
                 or synthesis.get("status")
-                in {"error", "insufficient_evidence"}
+                in {"error", "insufficient_evidence", "citation_error"}
             )
         )
 
         status = (
             "partial"
-            if pending_domains or synthesis_incomplete
+            if pending_domains or synthesis_incomplete or (recommendations and recommendations.get('status') == 'error')
             else "completed"
         )
 
@@ -229,12 +252,16 @@ def consult(request: CSRQuestionRequest):
             **routing,
             "status": status,
             "agent_results": agent_results,
+            "specialist_tasks": specialist_tasks,
             "pending_domains": pending_domains,
             "synthesis": synthesis,
+            "recommendations": recommendations,
         }
 
 
-    except Exception:
+    except Exception as error:
+        if getattr(error, 'code', None) == 429:
+            raise HTTPException(status_code=429, detail='Gemini request quota is exhausted. Retry after your quota resets or review your API account limits. Retrieved documents and indexes are preserved.') from None
         logger.exception("Consulting request failed")
         raise HTTPException(
             status_code=500,
@@ -245,3 +272,15 @@ def consult(request: CSRQuestionRequest):
             ),
         ) from None
 
+
+
+@app.get('/evaluation')
+def evaluation_report():
+    import json
+    report = Path(__file__).resolve().parent / 'evaluation' / 'results.json'
+    return json.loads(report.read_text('utf-8')) if report.exists() else {'status': 'not_run', 'instructions': 'Run python -m evaluation.run --live'}
+
+
+@app.get('/evaluation/view')
+def evaluation_page():
+    return FileResponse(Path(__file__).resolve().parent / 'web' / 'evaluation.html')

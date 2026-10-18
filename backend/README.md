@@ -1,191 +1,229 @@
-# Backend
+# Backend reference
 
-## Chat interface
+For installation, Gemini configuration, restart instructions and Windows startup
+commands, use the [main README](../README.md). This document describes the current
+backend and individual maintenance commands.
 
-Open the server's home address (for example `http://127.0.0.1:8080/`) for the
-chat interface. It submits questions to `/consult` and shows each specialist's
-answer with expandable sources. Questions are independent; the backend does not
-retain conversation context. Messages stay in the current page only.
-API documentation remains at `/docs`; the status endpoint is `/health`.
+## Architecture
 
-## One-command startup on Windows
-
-Install Python 3.14+ and set `GEMINI_API_KEY` in `backend/.env` first:
-
-```dotenv
-GEMINI_API_KEY=your-key-here
+```text
+Browser chat -> POST /consult -> Manager Agent -> selected specialists
+                                                | Technology
+                                                | Clinical
+                                                | SEC
+                                                | Corporate Responsibility
+                                                      |
+                                              domain-specific retrieval
+                                                      |
+                                             cited specialist answers
+                                                      |
+                                        cross-domain synthesis when needed
+                                                      |
+                                      ranked proposals for advice questions
 ```
 
-From the project root, run:
+| Component | Responsibility |
+|---|---|
+| `main.py` | FastAPI routes and specialist orchestration |
+| `llm.py` | Gemini settings, client factories and local embedding model |
+| `agents/manager.py` | Classify intent, select domains and explain routing |
+| `agents/technology.py`, `clinical.py`, `sec.py`, `csr.py` | Domain-specific answers |
+| `agents/cross.py` | Combine usable findings from multiple domains |
+| `rag/` | Loading, chunking, Chroma storage, retrieval and citation checks |
+| `recommendations/` | Generate structured proposals and rank eligible candidates |
+| `web/` | Chat and saved evaluation interfaces |
+| `evaluation/` | Labeled cases, evaluation scripts, results and review template |
+
+## Configuration and storage
+
+Create `backend/.env` using the copyable template in the
+[main README's environment setup](../README.md#create-backendenv).
+When working from this directory, the file path is simply `.env`.
+
+Configuration precedence is process environment, then `backend/.env`, then the
+root `.env`. All reasoning agents use `GEMINI_API_KEY` and `GEMINI_MODEL`.
+`GEMINI_MODEL` defaults to `gemini-2.5-flash`; set it to a model available to your
+account when needed. Restart the server after changing configuration.
+
+Embeddings use FastEmbed's `BAAI/bge-small-en-v1.5` on CPU. Its first use downloads
+the model into `.cache/fastembed/`. Cached local embedding generation requires no
+Gemini calls. Vectors are stored in `chroma_db_local_bge_small_en_v15/` with separate
+`technology`, `clinical`, `sec` and `csr` collections. Changing the embedding model
+requires a separate or rebuilt index with matching vectors.
+
+The API is a local prototype. It has no user authentication, persistent customer
+profiles or server-side conversation history. `/consult` treats each question
+independently. Model confidence is not calibrated accuracy.
+
+## Source locations
+
+Paths in this section are relative to `backend`.
+
+| Domain | Inputs |
+|---|---|
+| Technology | PDF/TXT files under `data/technology/` and `documents/technology/` |
+| Clinical | PDF/TXT files under `data/clinical/` and `documents/clinical/` |
+| SEC | Filing PDFs configured in `ingest_sec.py` under `data/sec/` |
+| CSR | `data/csr/SOFI-2023.pdf` and `data/csr/SOFI-2024.pdf` |
+
+Reference lists are read from the top level of `data/technology/*.txt` and
+`data/clinical/*.txt`. Fetched content is saved under the appropriate domain's
+`public_web/` subdirectory with `.source.json` provenance. Agilent references are
+routed to Clinical even when `Agilent.txt` is stored in Technology.
+
+The public-source fetcher allows only exact listed HTTPS URLs, rejects redirects,
+limits downloads to 25 MB and caches successful results. It records failures in
+`data/public_source_report.json`. It does not crawl or treat descriptions as
+retrieved documentation. Some sites return HTTP 403 and require authorized local
+copies instead.
+
+`fetch_sec.py` separately retrieves Cisco's
+[official fiscal 2025 annual report](https://www.cisco.com/c/dam/en_us/about/annual-report/2025-cisco-full-annual-report.pdf),
+verifies the company and fiscal period, and saves its source URL. The SEC ingestion
+configuration also includes Alphabet fiscal 2024 and Agilent fiscal 2025.
+
+Clinical papers with mismatched filenames retain their original paths. Verified
+cover titles in `data/clinical_titles.json` are used for display only when the PDF
+hash matches. CSV trial records are preserved but not embedded. Two files with
+`.pdf` names actually contain CSV data and are skipped.
+
+## Fetch and index manually
+
+Run these commands from the **backend directory**. No environment activation is
+necessary when using its explicit Python path.
+
+Fetch the listed public sources and the Cisco filing:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\run.ps1
+.\.venv\Scripts\python.exe fetch_technology.py --all
+.\.venv\Scripts\python.exe fetch_sec.py
 ```
 
-The launcher creates `backend/.venv`, installs dependencies, validates the key is
-configured, indexes the configured SEC/CSR PDFs and supported clinical/technology documents, and starts the API at
-`http://127.0.0.1:8000/docs`. Ingestion computes embeddings locally; unchanged
-chunks are skipped. Missing configured PDFs or a failed step stop startup.
-Clinical/technology ingestion reports reference lists, structured CSVs and unreadable files as skipped.
+Use `fetch_technology.py --all --refresh` to download successful cached reference
+sources again. A single listed URL can be selected with `--url`.
 
-For subsequent runs when dependencies and documents are already set up:
+Index each domain:
 
 ```powershell
-.\run.ps1 -SkipInstall -SkipIngestion
-```
-
-Use `-Port 8001` to change the port, or `-PythonCommand C:\Python314\python.exe`
-to choose the interpreter used to create the environment. Stop with Ctrl+C.
-
-## Shared LLM configuration
-
-`llm.py` owns model selection, API credentials, and Gemini/LangChain client
-creation for the manager, SEC specialist, and RAG components. Set these in your
-environment or in `backend/.env` (the root `.env` is also supported):
-
-```dotenv
-GEMINI_API_KEY=your-key-here
-GEMINI_MODEL=gemini-2.5-flash
-```
-
-Existing environment variables take precedence, followed by `backend/.env`, then
-the root `.env`. The RAG answer model now uses the same `GEMINI_MODEL` as agents.
-Changing the embedding model requires rebuilding the vector index.
-
-## SEC specialist
-
-Run from the `backend` directory. Set `GEMINI_API_KEY` in your environment or
-`.env`; `GEMINI_MODEL` optionally overrides the default model.
-
-Install project dependencies with `python -m pip install -e .`.
-
-Ingest your authoritative filing PDFs once:
-
-```python
-from rag.ingestion import load_and_split
-from rag.vector_store import store_documents
-
-chunks = load_and_split("path/to/cisco-2025.pdf")
-for chunk in chunks:
-    chunk.metadata.update(company="Cisco", reporting_period="2025")
-store_documents(chunks, "sec")
-```
-
-Repeat for Agilent. Verify each PDF's actual reporting period before labeling it.
-The low-level store_documents example adds documents directly. Use the ingestion
-scripts for stable IDs and repeatable indexing.
-
-```python
-from agents.sec import SECAgent
-
-result = SECAgent().analyze(
-    "What financial, competitive, and operational risks does Cisco disclose?"
-)
-print(result["answer"])
-print(result["sources"])
-```
-
-Results contain an answer and retrieved excerpts with source IDs and one-based
-PDF page numbers. An empty collection returns `insufficient_evidence` without
-calling the answer model. Retrieved excerpts are candidates, not a guarantee of
-relevance or complete company coverage. Citations and factual support still need
-evaluation against the filings; generated citations are not programmatically
-verified. This specialist is callable directly and is not yet wired into `/route`.
-
-Run offline SEC agent tests with:
-
-```powershell
-python -m unittest discover -s tests -v
-```
-
-## Gemini migration
-
-Install the updated dependencies with `python -m pip install -e .`.
-Set `GEMINI_API_KEY` in `backend/.env`. All agents now use `GEMINI_MODEL`.
-Document embeddings now run locally using FastEmbed's `BAAI/bge-small-en-v1.5`
-model on CPU. The first use downloads the model to `backend/.cache/fastembed/`;
-after download, embedding generation requires no API key or embedding API calls.
-Gemini remains the chat provider and still requires `GEMINI_API_KEY` to answer.
-`GEMINI_EMBEDDING_MODEL` is no longer used.
-
-Local vectors are stored in `backend/chroma_db_local_bge_small_en_v15/`.
-Existing Gemini/OpenAI indexes are preserved. Re-run `python ingest_sec.py` and
-`python ingest_csr.py` to populate the new index; ingest technology/clinical data
-again too. The model is fixed in `llm.py`; changing it requires a new index path.
-There are no quota-related pauses during local ingestion.
-
-From the project root, run `powershell -ExecutionPolicy Bypass -File .\run.ps1`
-to install the new dependency, re-index, and start the API. Do not use
-`-SkipInstall` or `-SkipIngestion` for the first run after this change.
-The previous `uv.lock` must be regenerated with `uv lock` before locked installs.
-
-## Added clinical and technology documents
-
-The root launcher now also runs `ingest_domains.py`. To ingest these domains alone:
-
-```powershell
-Set-Location backend
+.\.venv\Scripts\python.exe ingest_sec.py
+.\.venv\Scripts\python.exe ingest_csr.py
 .\.venv\Scripts\python.exe ingest_domains.py
 ```
 
-Clinical and technology PDF/TXT content is indexed into its own collection with
-stable IDs and PDF page metadata. Repeat runs skip existing chunks; modified
-files replace obsolete chunks after successful ingestion. Trial CSV files remain
-preserved as structured data rather than being embedded as unstructured evidence.
-TXT reference lists containing URLs are explicitly skipped: a URL description is
-not a source document. Download the actual approved Cisco/Google documentation
-into `data/technology` and Agilent instrument documentation into `data/clinical`,
-then rerun ingestion. This script does not fetch or fabricate linked content.
-
-
-## Technology response and source setup
-
-Technology answers are normalized from Gemini text blocks to plain text; the
-chat renderer also handles structured responses safely. Empty retrieval returns
-`insufficient_evidence` without a model call. Source excerpts, PDF pages and
-public URLs are preserved. The pipeline uses a local evidence-only prompt and
-does not require a LangSmith prompt download at startup.
-
-The professor-listed Google Cloud RAG page can be downloaded and indexed with:
+To update only clinical or technology documents:
 
 ```powershell
-Set-Location backend
-.\.venv\Scripts\python.exe fetch_technology.py
+.\.venv\Scripts\python.exe ingest_domains.py --domain clinical
 .\.venv\Scripts\python.exe ingest_domains.py --domain technology
 ```
 
-The fetcher only permits exact HTTPS references in `data/technology/*.txt`,
-rejects redirects, limits downloads to 25 MB and saves source URL provenance.
-Use `--url` to select a different professor-listed reference. It does not crawl
-or substitute descriptions for content. Other Cisco/Google sources still need
-fetching before questions requiring their documentation can be answered.
+Dedicated scripts use stable chunk IDs, skip unchanged embeddings and remove
+obsolete passages for modified files after storing replacements. Original input
+files are preserved. Missing configured SEC/CSR documents stop their ingestion;
+unsupported or unreadable clinical/technology inputs are reported as skipped.
+Deleting a source file does not automatically purge its previously indexed chunks.
 
-After code changes, restart the server and refresh the browser to load the
-updated renderer. Run `python -m unittest discover -s tests -v` for regression
-tests; the renderer regression test also requires Node.js.
+After adding an SEC filing, update its verified company and full fiscal date in
+`ingest_sec.py` before indexing. Do not infer these fields from an opaque filename.
+Avoid using the low-level `store_documents` helper for repeat ingestion: it does
+not provide the scripts' stable-ID handling.
 
+## Retrieval, citations and recommendations
 
-## Reading all professor reference links
+SEC retrieval filters explicitly named companies and filing periods. Technology
+queries naming Cisco or Google use the corresponding source organization.
+Clinical instrument/Agilent questions use Agilent manufacturer evidence rather
+than treating general research papers as equipment specifications. CSR can filter
+SOFI 2023/2024 by the requested report year.
 
-Normal startup now fetches every exact HTTPS URL in the root clinical/technology
-TXT reference lists before indexing. Agilent references go into clinical even if
-Agilent.txt is in the technology directory. Google/Cisco content goes into technology.
-Gemini receives matching passages retrieved from that content; a URL in a prompt
-is not a guarantee that its contents have been retrieved.
+Answers expose evidence excerpts and one-based physical PDF pages when available.
+Citation validation recognizes grouped labels and domain-qualified references.
+Missing or invalid references cause answers to be withheld. Source identity
+checks do not establish claim entailment or guarantee that retrieved passages
+fully answer the question.
 
-Successful downloads are cached. `data/public_source_report.json` records each
-source's domain, availability and any error. Blocked pages (including HTTP 403)
-remain unavailable; no content is invented and redirects are not followed.
-Use `-RefreshSources` with the launcher to download cached sources again,
-`-SkipSourceFetch` to index only local content, or `-SkipIngestion` to skip
-both fetching and indexing. To refresh sources separately:
+Cross-domain synthesis requires at least two usable specialist findings. Failed,
+uncited or insufficient-evidence results are excluded. Its sources have
+qualified IDs such as `technology:T1` and `sec:S1`.
 
-```powershell
-Set-Location backend
-.\.venv\Scripts\python.exe fetch_technology.py --all
-.\.venv\Scripts\python.exe ingest_domains.py
+Advice questions may produce up to three proposals with an owner, prerequisites,
+qualitative expected impact, success metric and supporting source IDs. The chat
+accepts optional requirements and ranking weights. Default weights are:
+
+| Factor | Weight | Meaning |
+|---|---|---|
+| Requirement match | 0.7 | Computed cosine similarity to the customer's question and requirements |
+| Domain coverage | 0.3 | Fraction of requested domains represented by proposal citations |
+
+Scores compare the generated eligible proposals; they do not estimate cost,
+reliability, regulatory compliance or ROI. Unknown numeric business inputs remain
+unknown. Procurement requires verified compatibility and regulatory checks, and
+additional configured mandatory checks apply to actions too. Unknown/failed checks
+hold a proposal out of ranking. The model cannot self-certify checks. The ranker
+supports explicit operator assertions for controlled use; the chat does not
+provide a purchase-approval workflow or authentication boundary.
+
+## API endpoints
+
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/` | Chat interface |
+| GET | `/health` | Server health |
+| GET | `/docs` | Interactive API documentation |
+| POST | `/route` | Manager classification without running specialists |
+| POST | `/consult` | Run selected specialists, synthesis and advice ranking |
+| POST | `/csr` | Query the CSR specialist directly |
+| GET | `/evaluation` | Saved evaluation report as JSON |
+| GET | `/evaluation/view` | Evaluation report page |
+
+Example consultation body:
+
+```json
+{
+  "question": "Should we pilot Cisco Catalyst 8300 networking considering supplier financial risk?",
+  "requirements": "Prioritize availability; equipment compatibility is not yet verified.",
+  "recommendation_weights": {
+    "requirement_match": 0.7,
+    "domain_coverage": 0.3
+  },
+  "mandatory_constraints": []
+}
 ```
 
-The browser's network error means it could not reach the consulting endpoint,
-not that a professor URL failed. Keep the API running, open the page from the
-server URL rather than a local HTML file, and refresh after a server reload.
+For CSR, `report_year` optionally accepts `2023` or `2024`. `/consult` returns
+routing information, `agent_results`, `pending_domains`, optional `synthesis` and
+optional `recommendations`. Partial results remain explicit. Gemini quota errors
+at the manager are reported as HTTP 429; specialist failures can appear in partial
+consultation results.
+
+## Verification
+
+Run tests from **backend** so the ingestion scripts are importable:
+
+```powershell
+.\.venv\Scripts\python.exe -B -m unittest discover -s tests -v
+```
+
+The saved snapshot contains 62 passing tests covering ingestion, source filters,
+citation rejection, cross-domain synthesis, ranking weights, mandatory checks,
+quality-rubric validation, API integration and JavaScript rendering. Node.js is
+needed for the renderer test. Regression tests do not measure general answer
+accuracy. Evaluation commands and their limitations are documented in the
+[evaluation protocol](evaluation/README.md); the saved results distinguish local
+measurements, quota-blocked live checks and pending human review.
+
+Clinical research questions about machine-learning methods route to Clinical;
+mentioning ML or neural networks alone does not select enterprise Technology.
+Explicit cloud deployment/networking questions still support both specialists.
+The routing guard is tested with the exact heart-attack research example; this
+regression result does not replace live routing evaluation.
+
+Multi-domain consultations now expose `specialist_tasks` with separate domain
+questions. Technology does not receive the SEC/SOFI subquestions, and financial
+risk searches use the identified Item 1A body when available. Named Catalyst
+queries filter to the corresponding product family. Cross-domain synthesis uses
+structured status/source checks instead of discarding any answer containing the
+phrase "insufficient evidence"; a valid technical answer may still have a caveat
+about another domain. Every usable specialist must be cited in the synthesis or
+the integrated answer is withheld. This behavior is covered by regression tests,
+including the nonprofit/Catalyst 8300/fiscal 2025/SOFI 2024 example.

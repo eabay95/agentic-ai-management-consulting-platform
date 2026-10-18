@@ -23,10 +23,12 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["agents*", "rag*", "web*"]
+include = ["agents*", "rag*", "web*", "recommendations*", "evaluation*"]
 
 [tool.setuptools]
 py-modules = ["llm", "main"]
 
 [tool.setuptools.package-data]
 web = ["*.html"]
+
+evaluation = ["*.json", "*.csv", "*.md"]

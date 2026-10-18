@@ -2,6 +2,7 @@ import json
 from typing import Any
 
 from llm import get_model, get_gemini_client
+from agents.routing_policy import apply_domain_policy
 
 
 DOMAIN_PROFILES = {
@@ -66,6 +67,12 @@ Rules:
 7. List missing information needed for a better answer.
 8. If the question asks about financial, operational, competitive,
 regulatory, or company risk, include the sec domain.
+9. Classify the decision topic, not merely the methods mentioned. A medical
+research question about ML prediction of heart attacks is Clinical only unless
+it also explicitly asks about enterprise infrastructure, cloud deployment,
+networking, or another technology-domain responsibility. Machine learning,
+neural networks, algorithms and web-based research prototypes alone do not
+justify the Technology Agent. Preserve additional finance/CSR domains when requested.
 
 Return exactly this JSON structure:
 
@@ -97,17 +104,26 @@ Return exactly this JSON structure:
             if domain in DOMAIN_PROFILES
         ]
 
+        original_domains = set(valid_domains)
+        valid_domains, adjustments = apply_domain_policy(question, valid_domains)
+        reasons = {domain: reason for domain, reason in result.get('reasons', {}).items() if domain in valid_domains}
+        if adjustments and 'clinical' in valid_domains:
+            reasons['clinical'] = 'The question requests clinical/medical research evidence; machine learning is its method, not a separate infrastructure question.'
+
         confidence = {
             domain: float(
                 result.get("confidence", {}).get(domain, 0.0)
             )
-            for domain in valid_domains
+            for domain in valid_domains if domain in original_domains
         }
 
+        confidence = {d: max(0.0, min(1.0, v)) for d, v in confidence.items()}
         return {
+            "confidence_note": "Model-reported routing confidence; not calibrated accuracy.",
             "domains": valid_domains,
             "confidence": confidence,
-            "reasons": result.get("reasons", {}),
+            "reasons": reasons,
+            "routing_adjustments": adjustments,
             "missing_information": result.get(
                 "missing_information",
                 [],

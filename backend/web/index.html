@@ -24,13 +24,13 @@
 </head>
 <body>
 <main>
-<header><div><h1>Consulting Assistant</h1><div class="subtitle">Evidence and next steps from your specialist agents.</div></div><a href="/docs">API docs</a></header>
+<header><div><h1>Consulting Assistant</h1><div class="subtitle">Evidence and next steps from your specialist agents.</div></div><nav><a href="/evaluation/view">Evaluation</a> ? <a href="/docs">API docs</a></nav></header>
 <section id="messages" aria-label="Conversation" aria-live="polite">
 <div id="welcome"><h2>What would you like to explore?</h2><p>Ask about company risks, technology, clinical equipment, or food security.</p><p class="note">Each question is answered independently. Include the company, year, and relevant context.</p>
 <div id="examples"><button type="button">What operational risks does Agilent disclose for fiscal 2025?</button><button type="button">What does SOFI 2024 say about food insecurity?</button></div></div>
 </section>
 <div id="status" role="status"></div>
-<form id="chat"><label for="question" class="label">Your question</label><textarea id="question" placeholder="Ask a consulting question…" minlength="3" maxlength="4000" required></textarea><div class="actions"><span class="note">Enter to send · Shift+Enter for a new line</span><div><button id="clear" type="button">Clear</button> <button id="send" type="submit">Send question</button></div></div></form>
+<form id="chat"><label for="question" class="label">Your question</label><textarea id="question" placeholder="Ask a consulting question…" minlength="3" maxlength="4000" required></textarea><details><summary>Decision requirements and ranking weights (optional)</summary><label for="requirements">Customer requirements</label><textarea id="requirements" maxlength="4000" placeholder="Equipment model, performance needs, budget, constraints and decision horizon"></textarea><p><label>Requirement similarity weight <input id="match-weight" type="number" min="0" max="1" step="0.1" value="0.7"></label> <label>Domain coverage weight <input id="coverage-weight" type="number" min="0" max="1" step="0.1" value="0.3"></label></p><label>Mandatory checks, comma separated <input id="constraints" type="text" maxlength="500" placeholder="budget approval, data privacy"></label><p class="note">Equipment purchases require verified compatibility and regulatory checks. Unknown checks hold proposals for review.</p></details><div class="actions"><span class="note">Enter to send · Shift+Enter for a new line</span><div><button id="clear" type="button">Clear</button> <button id="send" type="submit">Send question</button></div></div></form>
 <p class="note">Answers may be incomplete. Check the cited evidence before making decisions.</p>
 </main>
 <script>
@@ -75,7 +75,31 @@ function formattedAnswer(text){
  }
  flush();return root;
 }
+function renderSources(sources,parent){
+ if(!sources?.length)return;
+ const details=element('details');details.append(element('summary',`Evidence references (${sources.length})`));
+ for(const source of sources){const row=element('div',undefined,'source');row.append(element('strong',`[${source.id}] ${source.document||source.source||'Source'}${source.page!=null?' ? PDF page '+source.page:''}`));if(source.source_url&&/^https?:\/\//i.test(source.source_url)){const link=element('a','Open source');link.href=source.source_url;link.target='_blank';link.rel='noopener noreferrer';row.append(element('br'),link);}if(source.excerpt)row.append(element('p',source.excerpt,'excerpt'));details.append(row);}
+ parent.append(details);
+}
 function render(data,box){
+ const routing=element('details');routing.append(element('summary','Agent routing and uncertainty'));
+ for(const domain of data.domains||[])routing.append(element('p',`${names[domain]||domain}: ${data.reasons?.[domain]||'Selected by manager'}${typeof data.confidence?.[domain]==='number'?' ? Model routing confidence '+data.confidence[domain].toFixed(2):''}`));
+ for(const [domain,task] of Object.entries(data.specialist_tasks||{}))routing.append(element('p',`${names[domain]||domain} task: ${task}`,'note'));
+ routing.append(element('p',data.confidence_note||'Routing confidence is model-reported, not measured accuracy.','note'));box.append(routing);
+ const plan=data.recommendations;
+ if(plan){box.append(element('h2','Ranked next actions'));
+ for(const [index,item] of (plan.ranked||[]).entries()){
+  box.append(element('h3',`${index+1}. ${item.title}`));box.append(element('p',item.rationale));
+  box.append(element('p',`Owner: ${item.owner} ? Expected impact: ${item.expected_impact}`));
+  box.append(element('p',`Measure: ${item.success_metric}`));
+  if(Array.isArray(item.prerequisites)&&item.prerequisites.length)box.append(element('p','Prerequisites: '+item.prerequisites.join('; ')));
+  box.append(element('p',`Ranking score: ${item.score.toFixed(3)} ? ${item.explanation}`,'note'));
+  box.append(element('p','Evidence: '+item.source_ids.map(id=>'['+id+']').join(' '),'note'));
+ }
+ for(const item of plan.held||[])box.append(element('p',`${item.title}: held pending ${item.unresolved_constraints.join(', ')}. ${item.rationale}`,'note'));
+ if(!(plan.ranked||[]).length)box.append(element('p','No proposal has passed all evidence and mandatory checks.','note'));
+ renderSources(plan.sources,box);
+ }
 
   // Display cross-agent synthesis when available.
   if (data.requires_cross_domain_reasoning && data.synthesis) {
@@ -102,6 +126,7 @@ function render(data,box){
         )
       );
     }
+    renderSources(synthesis.sources, section);
     box.append(section);
   }
 
@@ -122,7 +147,7 @@ form.addEventListener('submit',async event=>{
  event.preventDefault();if(busy)return;const question=input.value.trim();if(question.length<3){input.setCustomValidity('Enter at least 3 non-space characters.');input.reportValidity();return;}input.setCustomValidity('');
  busy=true;send.disabled=true;clear.disabled=true;message('user',question);input.value='';status.textContent='Consulting the relevant specialists…';status.scrollIntoView({block:'nearest'});
  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),180000);
- try{const response=await fetch('/consult',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question}),signal:controller.signal});if(!response.ok)throw new Error(`Request failed (${response.status}). Please try again or check the server logs.`);const data=await response.json();render(data,message('assistant'));}
+ try{const response=await fetch('/consult',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,requirements:document.querySelector('#requirements').value,recommendation_weights:{requirement_match:Number(document.querySelector('#match-weight').value),domain_coverage:Number(document.querySelector('#coverage-weight').value)},mandatory_constraints:document.querySelector('#constraints').value.split(',').map(s=>s.trim()).filter(Boolean)}),signal:controller.signal});if(!response.ok){const errorData=await response.json().catch(()=>({}));throw new Error(typeof errorData.detail==='string'?errorData.detail:`Request failed (${response.status}). Please try again or check the server logs.`);}const data=await response.json();render(data,message('assistant'));}
  catch(error){const text=error.name==='AbortError'?'The request timed out. The server may still be processing it. Try again shortly.':error instanceof TypeError?'Cannot reach the consulting server. Keep the server terminal running, reopen the app at its http://127.0.0.1 address, and try again. This connection error does not indicate whether a source URL is accessible.':error.message;message('assistant',text).classList.add('error');input.value=question;}
  finally{clearTimeout(timer);busy=false;send.disabled=false;clear.disabled=false;status.textContent='';input.focus();}
 });

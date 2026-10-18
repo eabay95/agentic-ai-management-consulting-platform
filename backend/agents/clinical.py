@@ -4,6 +4,8 @@ import json
 from typing import Any
 
 from llm import get_model, get_gemini_client
+from rag.citations import check_citations
+from rag.retrieval import retrieve_documents
 
 
 INSTRUCTIONS = """Write for quick reading: lead with a direct one-sentence answer, then short
@@ -14,11 +16,15 @@ Use plain language and avoid repeating the question or evidence limitations.
 
 
 You are the Clinical Consulting Agent.
+Address clinical research and laboratory requirements only. Peer specialists cover networking, financial disclosures and CSR; do not treat those separate scopes as missing clinical evidence.
 
 Your job is to answer clinical, laboratory, diagnostic, assay, and healthcare
 technology questions using only the provided evidence.
 
 Do not invent facts. If the evidence is insufficient, clearly say so.
+Distinguish general heart-disease risk modeling from prediction of acute heart
+attacks. Attribute results and limitations to the research; do not imply validated
+clinical effectiveness or calibrated risk probabilities without supporting evidence.
 Provide a concise, professional answer and refer to the provided source IDs.
 """
 
@@ -48,7 +54,7 @@ class ClinicalAgent:
 
             self.vector_store = get_vector_store("clinical")
 
-        documents = self.vector_store.similarity_search(question, k=k)
+        documents = retrieve_documents(self.vector_store, "clinical", question, k)
 
         sources = []
 
@@ -63,8 +69,10 @@ class ClinicalAgent:
                 {
                     "id": f"C{index}",
                     "source": metadata.get("source"),
+                    "document": metadata.get("document_title") or metadata.get("document_name") or metadata.get("source"),
                     "page": page,
                     "excerpt": document.page_content,
+                    "source_url": metadata.get("source_url", ""),
                 }
             )
 
@@ -95,7 +103,13 @@ class ClinicalAgent:
             ),
         )
 
+        answer = (response.text or '').strip()
+        citation_check = check_citations(answer, sources)
+        if not citation_check['valid']:
+            return dict(status='citation_error', domain='clinical', question=question, sources=sources,
+                        answer='The clinical answer was withheld because it lacked valid source citations.', citation_check=citation_check)
         return {
+            "citation_check": citation_check,
             "status": "completed",
             "domain": "clinical",
             "question": question,

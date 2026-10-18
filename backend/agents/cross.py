@@ -2,6 +2,7 @@ from llm import get_model, get_gemini_client
 from typing import Any
 import json
 import re
+from rag.citations import check_citations, usable_result
 
 CROSS_INSTRUCTIONS = """
 You are the Cross-Agent Management Consulting Synthesizer.
@@ -23,6 +24,12 @@ Rules:
 8. Distinguish documented facts from your own recommendations.
 9. Provide prioritized consulting actions when appropriate.
 10. Keep answers concise and professionally structured.
+11. Each specialist was assigned only its own domain subquestion. A specialist's
+lack of finance or SOFI evidence is not a failure of its technical assessment.
+Use the supplied per-domain evidence; do not claim a whole domain has no evidence
+when it appears in specialist_findings. Address and cite every supplied domain.
+12. Do not ask the customer to obtain a document that another specialist already
+supplied. Identify the specific missing specification or passage instead.
 
 Response structure:
 
@@ -78,7 +85,6 @@ class CrossAgent:
         skipped = {}
 
         for domain, result in agent_results.items():
-            status = result.get("status")
 
             if not self.has_usable_answer(result):
                 skipped[domain] = "no_usable_evidence"
@@ -106,6 +112,7 @@ class CrossAgent:
                         "pdf_page",
                         source.get("page")
                     ),
+                    "source_url": source.get("source_url", ""),
                     "excerpt": source.get(
                         "excerpt",
                         source.get("passage")
@@ -184,6 +191,14 @@ class CrossAgent:
         ]
 
         citation_check = self.validate_citations(answer, sources)
+        covered = {label.split(':', 1)[0] for label in citation_check['cited_ids']}
+        citation_check['missing_domains'] = sorted(set(prepared) - covered)
+        citation_check['valid'] = citation_check['valid'] and not citation_check['missing_domains']
+        if not citation_check['valid']:
+            return dict(status='citation_error', question=question,
+                        answer='The integrated recommendation was withheld because it failed citation or specialist-coverage checks.',
+                        used_domains=list(prepared), skipped_domains=skipped, sources=sources,
+                        citation_check=citation_check)
 
         return {
             "status": "generated_needs_review",
@@ -200,71 +215,10 @@ class CrossAgent:
         answer: str,
         sources: list[dict[str, Any]],
     ) -> dict[str, Any]:
-        valid_ids = {source["id"] for source in sources}
-
-        # Extract every bracketed citation group.
-        groups = re.findall(r"\[([^\[\]]+)\]", answer)
-
-        cited_ids = set()
-        invalid_ids = set()
-
-        for group in groups:
-            # Ignore brackets that aren't citation-shaped.
-            if not re.match(r"^[a-z]+:", group.strip()):
-                continue
-
-            for citation in group.split(","):
-                citation_id = citation.strip()
-
-                if not re.fullmatch(
-                    r"[a-z]+:(?:[A-Z]\d+|\d+)",
-                    citation_id,
-                ):
-                    invalid_ids.add(citation_id)
-                elif citation_id not in valid_ids:
-                    invalid_ids.add(citation_id)
-                else:
-                    cited_ids.add(citation_id)
-
-        return {
-            "valid": bool(cited_ids) and not invalid_ids,
-            "cited_ids": sorted(cited_ids),
-            "invalid_ids": sorted(invalid_ids),
-        }
+        return check_citations(answer, sources)
 
 
     def has_usable_answer(self, result: dict[str, Any]) -> bool:
-        status = result.get("status", "")
-
-        if status in {"error", "insufficient_evidence"}:
-            return False
-
-        answer = result.get("answer", "")
-
-        if not isinstance(answer, str) or not answer.strip():
-            return False
-
-        if not result.get("sources"):
-            return False
-
-        answer_lower = answer.lower()
-
-        insufficient_phrases = [
-            "i don't know",
-            "i do not know",
-            "provided context does not contain",
-            "not enough information",
-            "insufficient evidence",
-            "no relevant information",
-            "cannot answer based on",
-        ]
-
-        if any(
-            phrase in answer_lower
-            for phrase in insufficient_phrases
-        ):
-            return False
-
-        return True
-
-
+        # Domain coverage is determined by structured status and available sources.
+        # A warning about a different domain must not discard valid local findings.
+        return usable_result(result)

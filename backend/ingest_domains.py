@@ -25,12 +25,32 @@ def prepare_documents(path, domain):
             header = source.read(1024)
         if b'%PDF-' not in header:
             return [], 'Not a PDF: file contents do not match its .pdf extension. Replace it with the original paper.'
+    if domain == 'technology' and not provenance.get('source_url'):
+        from fetch_technology import reference_sources
+        from urllib.parse import urlsplit
+        for url in reference_sources():
+            if Path(urlsplit(url).path).name == path.name:
+                provenance['source_url'] = url
+                break
     documents = [d for d in load_and_split(str(path)) if d.page_content.strip()]
     if not documents:
         raise ValueError(f'No extractable text: {path.name}')
+    title_record = {}
+    catalog = BASE_DIR / 'data' / 'clinical_titles.json'
+    if domain == 'clinical' and catalog.exists():
+        record = json.loads(catalog.read_text('utf-8')).get(path.name, {})
+        if record.get('sha256') == hashlib.sha256(path.read_bytes()).hexdigest():
+            title_record = record
     for document in documents:
+        if title_record:
+            document.metadata['document_title'] = title_record['title']
         if provenance.get('source_url'):
             document.metadata['source_url'] = provenance['source_url']
+        identifying_text = (str(path) + ' ' + provenance.get('source_url', '') + ' ' + ' '.join(d.page_content for d in documents[:2])).lower()
+        family = re.search(r'(?i)\b(Catalyst\s+(?:8300|8200|8000V)|ASR\s+1000)\b', identifying_text)
+        if family:
+            document.metadata['product_family'] = re.sub(r'\s+', ' ', family.group(1)).lower()
+        document.metadata['source_organization'] = ('Agilent' if 'agilent' in identifying_text else 'Cisco' if 'cisco' in identifying_text else 'Google Cloud' if 'cloud.google.com' in identifying_text else 'Research authors')
         document.metadata.update(domain=domain, document_name=path.name,
                                  ingestion_owner=f'{domain}_documents_v1')
         page = document.metadata.get('page')
@@ -41,12 +61,14 @@ def prepare_documents(path, domain):
 
 def ingest_domain(domain):
     folder = BASE_DIR / 'data' / domain
-    if not folder.is_dir():
+    document_folder = BASE_DIR / 'documents' / domain
+    if not folder.is_dir() and not document_folder.is_dir():
         print(f'{domain}: no data directory; nothing to ingest.')
         return
     store = None
     total = 0
-    for path in sorted(folder.rglob('*')):
+    paths = sorted([*folder.rglob('*'), *document_folder.rglob('*')])
+    for path in paths:
         if not path.is_file() or path.suffix.lower() not in {'.pdf', '.txt', '.csv'}:
             continue
         try:
@@ -60,7 +82,7 @@ def ingest_domain(domain):
         if store is None:
             store = get_vector_store(domain)
         owner = f'{domain}_documents_v1'
-        relative = path.relative_to(folder).as_posix()
+        relative = path.relative_to(folder).as_posix() if path.is_relative_to(folder) else 'documents/' + path.relative_to(document_folder).as_posix()
         for document in documents:
             document.metadata['ingestion_file'] = relative
         identifiers = [hashlib.sha256(
@@ -71,6 +93,10 @@ def ingest_domain(domain):
             {'ingestion_file': {'$eq': relative}}
         ]}, include=['metadatas'])
         existing_ids = set(existing['ids'])
+        retained = [(key, doc.metadata) for key, doc in zip(identifiers, documents) if key in existing_ids]
+        for start in range(0, len(retained), BATCH_SIZE):
+            batch = retained[start:start+BATCH_SIZE]
+            store._collection.update(ids=[i for i, _ in batch], metadatas=[m for _, m in batch])
         pending = [(identifier, document) for identifier, document in zip(identifiers, documents)
                    if identifier not in existing_ids]
         for start in range(0, len(pending), BATCH_SIZE):

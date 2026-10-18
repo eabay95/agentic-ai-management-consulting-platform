@@ -67,6 +67,13 @@ render({agent_results:{technology:{status:'completed',answer,sources:[{id:'T1',d
 assert.ok(JSON.stringify(box).includes('RAG uses evidence'));
 assert.ok(!JSON.stringify(box).includes('hidden'));
 assert.ok(JSON.stringify(box).includes('Open source'));
+const ranked=element('article');
+render({domains:['technology','sec'],requires_cross_domain_reasoning:true,
+ synthesis:{status:'generated_needs_review',answer:'Integrated [technology:T1]',sources:[]},
+ recommendations:{ranked:[{title:'Verify supplies',rationale:'Documented resilience',owner:'Operator',expected_impact:'Expected availability improvement',success_metric:'Outage duration',score:.7,explanation:'Similarity only',source_ids:['technology:T1']}],held:[],sources:[]}},ranked);
+assert.ok(JSON.stringify(ranked).includes('Ranked next actions'));
+assert.ok(JSON.stringify(ranked).includes('Executive Consulting Recommendation'));
+assert.ok(JSON.stringify(ranked).includes('Outage duration'));
 '''
         result = subprocess.run(['node', '-e', script], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)

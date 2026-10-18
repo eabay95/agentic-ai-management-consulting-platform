@@ -1,0 +1,81 @@
+[
+  {
+    "id": "route-mcp",
+    "question": "What is MCP in Google Cloud?",
+    "domains": [
+      "technology"
+    ]
+  },
+  {
+    "id": "route-router",
+    "question": "What power-supply redundancy does the Cisco Catalyst 8300 datasheet document?",
+    "domains": [
+      "technology"
+    ]
+  },
+  {
+    "id": "route-sec",
+    "question": "What supply-chain financial risks does Cisco disclose in its fiscal 2025 annual report?",
+    "domains": [
+      "sec"
+    ]
+  },
+  {
+    "id": "route-agilent",
+    "question": "What financial risks does Agilent disclose in its fiscal 2025 filing?",
+    "domains": [
+      "sec"
+    ]
+  },
+  {
+    "id": "route-food23",
+    "question": "What are the major reasons for food insecurity in SOFI 2023?",
+    "domains": [
+      "csr"
+    ]
+  },
+  {
+    "id": "route-food24",
+    "question": "How does SOFI 2024 describe affordability of healthy diets?",
+    "domains": [
+      "csr"
+    ]
+  },
+  {
+    "id": "route-war",
+    "question": "Explain malnutrition in war zones using the SOFI report.",
+    "domains": [
+      "csr"
+    ]
+  },
+  {
+    "id": "route-clinical",
+    "question": "Summarize clinical research on diabetes patient education.",
+    "domains": [
+      "clinical"
+    ]
+  },
+  {
+    "id": "route-lab",
+    "question": "Which Agilent instrument meets our laboratory assay requirements?",
+    "domains": [
+      "clinical"
+    ]
+  },
+  {
+    "id": "route-cross",
+    "question": "For a food-security nonprofit, evaluate Cisco networking technology, supplier financial risks and SOFI food-security priorities.",
+    "domains": [
+      "technology",
+      "sec",
+      "csr"
+    ]
+  },
+  {
+    "id": "route-clinical-heart-ml",
+    "question": "According to the uploaded clinical research, how is machine learning used to predict heart attacks, and what limitations are reported?",
+    "domains": [
+      "clinical"
+    ]
+  }
+]
