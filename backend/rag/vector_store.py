@@ -1,15 +1,12 @@
-import os
 from pathlib import Path
 
-from dotenv import load_dotenv
 from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
 from langchain_core.documents import Document
 
-load_dotenv()
+from llm import get_embeddings
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-DB_PATH = BASE_DIR / "chroma_db"
+DB_PATH = BASE_DIR / "chroma_db_local_bge_small_en_v15"
 
 VALID_DOMAINS = {
     "technology",
@@ -17,10 +14,6 @@ VALID_DOMAINS = {
     "sec",
     "csr",
 }
-
-def get_embeddings():
-    return OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))
-
 
 def get_vector_store(collection_name: str):
     if collection_name not in VALID_DOMAINS:

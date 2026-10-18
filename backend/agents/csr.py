@@ -1,18 +1,11 @@
 # CSR agent implementation by Raheem Saeed
 
-import os
 import re
-from pathlib import Path
 from typing import Any
 
-from dotenv import load_dotenv
-from openai import OpenAI
+from llm import get_model, get_gemini_client
 
 from rag.vector_store import get_vector_store
-
-
-BASE_DIR = Path(__file__).resolve().parents[1]
-load_dotenv(BASE_DIR / ".env")
 
 
 CSR_INSTRUCTIONS = """
@@ -44,37 +37,25 @@ Rules:
 12. Do not assume the reports contain company-specific emissions
     or ESG performance data.
 
-Structure the answer using these sections:
-
-Findings:
-Answer the question with supporting citations.
-
-Ranked proposed actions:
-Explain appropriate actions, priorities, owners, prerequisites,
-and success indicators. If evidence is insufficient, explain
-what must be established before recommending an action.
-
-Uncertainty and missing information:
-Identify limitations, assumptions, and unanswered questions.
-
-Next step:
-State the most useful immediate action.
+Presentation:
+- Start with a direct one-sentence answer, then a short bulleted list.
+- Use plain language, short sentences, and **bold labels** for key points.
+- Use Markdown headings (###) only when they help navigation.
+- Match the scope: a request to list reasons needs a concise list with citations,
+  not a full consulting report. Add ranked actions only when advice is requested.
+- For advice, give up to three actions with owner, prerequisite, and success metric.
+- Keep the answer around 150-250 words unless the user requests more detail.
+- End with a brief evidence limitation only if it affects the answer. Do not
+  repeat the question or add unrelated background. Keep supporting citations.
 """
 
 
 class CSRAgent:
     """Retrieves food-security evidence and provides CSR recommendations."""
 
-    def __init__(self, client: OpenAI | None = None):
-        api_key = os.getenv("OPENAI_API_KEY")
-
-        if client is None and not api_key:
-            raise ValueError(
-                "OPENAI_API_KEY is missing. Add it to the .env file."
-            )
-
-        self.client = client or OpenAI(api_key=api_key)
-        self.model = os.getenv("CSR_MODEL", "gpt-4o-mini")
+    def __init__(self, client=None):
+        self.client = client if client is not None else get_gemini_client()
+        self.model = get_model()
         self.vector_store = get_vector_store("csr")
 
     def retrieve(
@@ -174,11 +155,10 @@ class CSRAgent:
 
         context = "\n\n---\n\n".join(context_blocks)
 
-        response = self.client.responses.create(
+        response = self.client.models.generate_content(
             model=self.model,
-            store=False,
-            instructions=CSR_INSTRUCTIONS,
-            input=(
+            config={"system_instruction": CSR_INSTRUCTIONS},
+            contents=(
                 f"Customer question:\n{question}\n\n"
                 f"Requested report year: "
                 f"{report_year or 'Both available reports'}\n\n"
@@ -186,7 +166,7 @@ class CSRAgent:
             ),
         )
 
-        answer = response.output_text.strip()
+        answer = (response.text or "").strip()
 
         if not answer:
             raise RuntimeError("The model returned an empty answer.")

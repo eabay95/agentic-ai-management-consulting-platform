@@ -1,12 +1,7 @@
 import json
-import os
 from typing import Any
 
-from dotenv import load_dotenv
-from openai import OpenAI
-
-
-load_dotenv()
+from llm import get_model, get_gemini_client
 
 
 DOMAIN_PROFILES = {
@@ -36,24 +31,13 @@ DOMAIN_PROFILES = {
 
 class ManagerAgent:
     """
-    Uses OpenAI to classify customer questions
+    Uses Gemini to classify customer questions
     and route them to specialist agents.
     """
 
-    def __init__(self, client: OpenAI | None = None):
-        api_key = os.getenv("OPENAI_API_KEY")
-
-        if not api_key:
-            raise ValueError(
-                "OPENAI_API_KEY is missing. "
-                "Please add it to the .env file."
-            )
-
-        self.client = client or OpenAI(api_key=api_key)
-        self.model = os.getenv(
-            "OPENAI_MODEL",
-            "gpt-4.1-mini",
-        )
+    def __init__(self, client=None):
+        self.client = client if client is not None else get_gemini_client()
+        self.model = get_model()
 
     def classify(self, question: str) -> dict[str, Any]:
         if not question or not question.strip():
@@ -98,19 +82,14 @@ Return exactly this JSON structure:
 }}
 """
 
-        response = self.client.responses.create(
+        response = self.client.models.generate_content(
             model=self.model,
-            store=False,
-            instructions=instructions,
-            input=f"Return a JSON object for this customer question:\n{question}",
-            text={
-                "format": {
-                    "type": "json_object",
-                }
-            },
+            config={"system_instruction": instructions, "response_mime_type": "application/json"},
+            contents=f"Return a JSON object for this customer question:\n{question}",
+
         )
 
-        result = json.loads(response.output_text)
+        result = json.loads((response.text or ""))
 
         valid_domains = [
             domain

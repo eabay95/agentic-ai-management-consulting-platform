@@ -1,3 +1,6 @@
 __pycache__/
 .venv/
 .env
+backend/chroma_db*/
+backend/.cache/
+*.egg-info/

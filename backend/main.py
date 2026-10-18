@@ -1,8 +1,10 @@
 import logging
 from functools import lru_cache
+from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from agents.manager import ManagerAgent
@@ -20,6 +22,11 @@ class QuestionRequest(BaseModel):
 
 @app.get("/")
 def main():
+    return FileResponse(Path(__file__).resolve().parent / "web" / "index.html")
+
+
+@app.get("/health")
+def health():
     return {
         "message": "Management Consulting Platform is running"
     }

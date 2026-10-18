@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consulting Assistant</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#20312e;background:#f5f6f3;color-scheme:light}
+*{box-sizing:border-box}body{margin:0}main{max-width:900px;margin:auto;padding:28px 20px}header{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #d8e0da;padding-bottom:20px}h1{font-size:22px;margin:0 0 6px}p{line-height:1.6;margin:8px 0}a{color:#235d4c}button,textarea{font:inherit}button{cursor:pointer;border:1px solid #c9d5ce;border-radius:10px;padding:10px 16px;background:white;color:#20312e}button:disabled{opacity:.55;cursor:wait}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #8cb8a8;outline-offset:3px}.subtitle,.note{color:#61736a;font-size:14px}#messages{min-height:35vh;padding:24px 0}.message{background:white;border:1px solid #dce3dd;border-radius:16px;padding:20px;margin-bottom:18px;overflow-wrap:anywhere}.message.user{background:#e6eee8;margin-left:12%}.label{font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;color:#526c60;margin-bottom:10px}.answer{white-space:pre-wrap;line-height:1.7;font-size:15px}h2{font-size:16px;margin:18px 0 8px}details{margin-top:16px;border-top:1px solid #e3e8e3;padding-top:12px}summary{cursor:pointer;color:#235d4c}.source{padding:12px 0;border-bottom:1px solid #edf0ed}.excerpt{white-space:pre-wrap;font-size:13px;color:#58685e;max-height:220px;overflow:auto}.error{color:#a52c2c}form{position:sticky;bottom:0;background:#f5f6f3;padding:12px 0}textarea{width:100%;resize:vertical;min-height:90px;max-height:260px;border:1px solid #b6c8bd;border-radius:12px;padding:14px;background:white;color:#20312e;outline-color:#43836a}.actions{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:10px}#send{background:#245e4b;color:white;border-color:#245e4b}#status{font-size:14px;color:#526c60}#examples{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}#examples button{text-align:left;font-size:13px} @media(max-width:550px){main{padding:20px 12px}.message{padding:16px}.message.user{margin-left:5%}header{align-items:flex-start}.subtitle{max-width:240px}.actions .note{font-size:12px}}
+.formatted{white-space:normal;max-width:72ch}.formatted h3{font-size:16px;margin:22px 0 10px;padding-top:8px;color:#245e4b}.formatted p{margin:10px 0}.formatted ul,.formatted ol{padding-left:24px;margin:12px 0}.formatted li{padding-left:4px;margin:9px 0;line-height:1.65}.formatted strong{font-weight:650}.formatted hr{border:0;border-top:1px solid #e3e8e3;margin:20px 0}.formatted code{background:#edf1ed;padding:2px 5px;border-radius:4px;font-size:.9em}.formatted>:first-child{margin-top:0}.formatted .citation{font-size:12px;color:#386653;background:#edf3ef;border-radius:4px;padding:1px 4px;white-space:nowrap}
+</style>
+</head>
+<body>
+<main>
+<header><div><h1>Consulting Assistant</h1><div class="subtitle">Evidence and next steps from your specialist agents.</div></div><a href="/docs">API docs</a></header>
+<section id="messages" aria-label="Conversation" aria-live="polite">
+<div id="welcome"><h2>What would you like to explore?</h2><p>Ask about company risks, technology, clinical equipment, or food security.</p><p class="note">Each question is answered independently. Include the company, year, and relevant context.</p>
+<div id="examples"><button type="button">What operational risks does Agilent disclose for fiscal 2025?</button><button type="button">What does SOFI 2024 say about food insecurity?</button></div></div>
+</section>
+<div id="status" role="status"></div>
+<form id="chat"><label for="question" class="label">Your question</label><textarea id="question" placeholder="Ask a consulting question…" minlength="3" maxlength="4000" required></textarea><div class="actions"><span class="note">Enter to send · Shift+Enter for a new line</span><div><button id="clear" type="button">Clear</button> <button id="send" type="submit">Send question</button></div></div></form>
+<p class="note">Answers may be incomplete. Check the cited evidence before making decisions.</p>
+</main>
+<script>
+const messages=document.querySelector('#messages'),form=document.querySelector('#chat'),input=document.querySelector('#question'),send=document.querySelector('#send'),clear=document.querySelector('#clear'),status=document.querySelector('#status');
+const names={sec:'SEC & company risk',clinical:'Clinical',technology:'Technology',csr:'Corporate responsibility'};
+let busy=false;
+function element(tag,text,className){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;}
+function message(role,text){document.querySelector('#welcome')?.remove();const box=element('article',undefined,'message '+role);box.append(element('div',role==='user'?'You':'Consulting assistant','label'));if(text)box.append(element('div',text,'answer'));messages.append(box);return box;}
+// Render a small Markdown subset with DOM nodes only. Model HTML is never executed.
+function inline(parent,text){
+ const tokens=/(\*\*([^*]+)\*\*|`([^`]+)`|(\[(?:[SC]\d+)(?:,\s*[SC]\d+)*\]))/g;
+ let end=0;
+ for(const match of text.matchAll(tokens)){
+  parent.append(document.createTextNode(text.slice(end,match.index)));
+  const node=match[2]?element('strong',match[2]):match[3]?element('code',match[3]):element('span',match[4],'citation');
+  parent.append(node);end=match.index+match[0].length;
+ }
+ parent.append(document.createTextNode(text.slice(end)));
+}
+function formattedAnswer(text){
+ const root=element('div',undefined,'answer formatted');let paragraph=[],list=null;
+ function flush(){if(paragraph.length){const p=element('p');inline(p,paragraph.join(' '));root.append(p);paragraph=[];}}
+ for(const line of text.replace(/\r/g,'').split('\n')){
+  const trimmed=line.trim();
+  if(!trimmed){flush();list=null;continue;}
+  if(/^[-*_]{3,}$/.test(trimmed)){flush();list=null;root.append(element('hr'));continue;}
+  const heading=trimmed.match(/^#{1,6}\s+(.+)$/);
+  if(heading){flush();list=null;const h=element('h3');inline(h,heading[1]);root.append(h);continue;}
+  const bullet=trimmed.match(/^(?:[-*+]\s+|\d+[.)]\s+)(.+)$/);
+  if(bullet){flush();const tag=/^\d/.test(trimmed)?'OL':'UL';if(!list||list.tagName!==tag){list=element(tag.toLowerCase());root.append(list);}const li=element('li');inline(li,bullet[1]);list.append(li);continue;}
+  list=null;paragraph.push(trimmed);
+ }
+ flush();return root;
+}
+function render(data,box){
+ const results=Object.entries(data.agent_results||{});
+ if(!results.length){box.append(element('p','More context is needed. Please include the company or topic and what you want to find out.'));}
+ for(const [domain,result] of results){
+  box.append(element('h2',names[domain]||domain));
+  if(result.status==='error'){box.append(element('p','This specialist could not complete the request. Try again or check the server logs.','error'));continue;}
+  box.append(formattedAnswer(result.answer||'No answer was returned.'));
+  if(result.status==='insufficient_evidence')box.append(element('p','No evidence was retrieved for this specialist.','note'));
+  const sources=result.sources||[];
+  if(sources.length){const details=element('details');details.append(element('summary',`Sources (${sources.length})`));for(const [index,source] of sources.entries()){const row=element('div',undefined,'source');const title=[source.id?`[${source.id}]`:`Source ${index+1}`,source.company,source.document||source.source||'Unknown document',source.reporting_period||source.report_year,(source.page??source.pdf_page)!=null?`PDF page ${source.page??source.pdf_page}`:null].filter(Boolean).join(' · ');row.append(element('strong',title));if(source.excerpt||source.passage)row.append(element('p',source.excerpt||source.passage,'excerpt'));details.append(row);}box.append(details);}
+ }
+ if(data.missing_information?.length)box.append(element('p','Helpful context: '+data.missing_information.join(' '),'note'));
+ if(data.pending_domains?.length)box.append(element('p','Some specialists could not finish: '+data.pending_domains.map(d=>names[d]||d).join(', '),'note'));
+}
+form.addEventListener('submit',async event=>{
+ event.preventDefault();if(busy)return;const question=input.value.trim();if(question.length<3){input.setCustomValidity('Enter at least 3 non-space characters.');input.reportValidity();return;}input.setCustomValidity('');
+ busy=true;send.disabled=true;clear.disabled=true;message('user',question);input.value='';status.textContent='Consulting the relevant specialists…';status.scrollIntoView({block:'nearest'});
+ const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),180000);
+ try{const response=await fetch('/consult',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question}),signal:controller.signal});if(!response.ok)throw new Error(`Request failed (${response.status}). Please try again or check the server logs.`);const data=await response.json();render(data,message('assistant'));}
+ catch(error){const text=error.name==='AbortError'?'The request timed out. The server may still be processing it. Try again shortly.':error.message;message('assistant',text).classList.add('error');input.value=question;}
+ finally{clearTimeout(timer);busy=false;send.disabled=false;clear.disabled=false;status.textContent='';input.focus();}
+});
+input.addEventListener('input',()=>input.setCustomValidity(''));
+input.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing){event.preventDefault();form.requestSubmit();}});
+clear.addEventListener('click',()=>{if(!busy){messages.replaceChildren();input.value='';input.focus();}});
+document.querySelectorAll('#examples button').forEach(button=>button.addEventListener('click',()=>{input.value=button.textContent;input.focus();}));
+</script>
+</body>
+</html>

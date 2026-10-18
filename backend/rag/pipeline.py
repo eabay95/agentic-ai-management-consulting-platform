@@ -1,15 +1,10 @@
-import os
-from dotenv import load_dotenv
 from typing_extensions import List, TypedDict
 from langchain_core.documents import Document
-from langchain_openai import ChatOpenAI
+from llm import get_chat_model
 from langsmith import Client
 from rag.vector_store import get_vector_store
 from langgraph.graph import START, StateGraph
 
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-llm = ChatOpenAI(model="gpt-4o-mini",api_key=api_key)
 
 client = Client()
 prompt = client.pull_prompt(
@@ -31,7 +26,7 @@ def retrieve(state: State):
 def generate(state: State):
     docs_content = "\n\n".join(doc.page_content for doc in state["context"])
     messages = prompt.invoke({"question": state["question"], "context": docs_content})
-    response = llm.invoke(messages)
+    response = get_chat_model().invoke(messages)
     return {"answer": response.content}
 
 graph_builder = StateGraph(State).add_sequence([retrieve, generate])

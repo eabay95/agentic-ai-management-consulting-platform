@@ -1,31 +1,27 @@
 # CSR document ingestion -- Raheem 
 
 import hashlib
-import os
 from pathlib import Path
 
-from dotenv import load_dotenv
 
 from rag.ingestion import load_and_split
+from rag.indexing import BATCH_SIZE, add_batch
 from rag.vector_store import get_vector_store
 
 
 BASE_DIR = Path(__file__).resolve().parent
 PDF_DIR = BASE_DIR / "data" / "csr"
 INGESTION_OWNER = "csr_sofi_v1"
-BATCH_SIZE = 64
 
 REPORTS = {
     "SOFI-2023.pdf": 2023,
     "SOFI-2024.pdf": 2024,
 }
 
-load_dotenv(BASE_DIR / ".env")
+
 
 
 def ingest_csr():
-    if not os.getenv("OPENAI_API_KEY"):
-        raise ValueError("Set OPENAI_API_KEY before loading CSR documents.")
 
     # Check both files before starting ingestion.
     for filename in REPORTS:
@@ -87,7 +83,8 @@ def ingest_csr():
         for start in range(0, len(pending), BATCH_SIZE):
             batch = pending[start : start + BATCH_SIZE]
 
-            vector_store.add_documents(
+            add_batch(
+                vector_store,
                 documents=[document for _, document in batch],
                 ids=[document_id for document_id, _ in batch],
             )

@@ -13,7 +13,7 @@ class SECAgentTests(unittest.TestCase):
         client = Mock()
         result = SECAgent(client, store).analyze("What are Cisco's risks?")
         self.assertEqual(result["status"], "insufficient_evidence")
-        client.responses.create.assert_not_called()
+        client.models.generate_content.assert_not_called()
 
     def test_evidence_and_page_numbers_are_preserved(self):
         store = Mock()
@@ -22,13 +22,13 @@ class SECAgentTests(unittest.TestCase):
             metadata={"source": "cisco-2025.pdf", "page": 9},
         )]
         client = Mock()
-        client.responses.create.return_value.output_text = "Margin risk [S1]."
+        client.models.generate_content.return_value.text = "Margin risk [S1]."
         result = SECAgent(client, store).analyze("Cisco risks", k=5)
         self.assertEqual(result["sources"][0]["page"], 10)
         self.assertEqual(result["answer"], "Margin risk [S1].")
-        request = client.responses.create.call_args.kwargs
-        self.assertEqual(json.loads(request["input"])["evidence"], result["sources"])
-        self.assertFalse(request["store"])
+        request = client.models.generate_content.call_args.kwargs
+        self.assertEqual(json.loads(request["contents"])["evidence"], result["sources"])
+        self.assertIn("system_instruction", request["config"])
         store.similarity_search.assert_called_once_with("Cisco risks", k=5)
 
     def test_invalid_input_is_rejected_before_retrieval(self):

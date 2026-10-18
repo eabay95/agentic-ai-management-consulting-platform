@@ -3,10 +3,16 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from llm import get_model, get_openai_client
+from llm import get_model, get_gemini_client
 
 
-INSTRUCTIONS = """
+INSTRUCTIONS = """Write for quick reading: lead with a direct one-sentence answer, then short
+bullets with bold labels and citations. Aim for 150-250 words unless more detail
+is requested. Include only sections relevant to the question. Give recommendations
+when advice is requested; simple factual/list questions need a focused answer.
+Use plain language and avoid repeating the question or evidence limitations.
+
+
 You are the Clinical Consulting Agent.
 
 Your job is to answer clinical, laboratory, diagnostic, assay, and healthcare
@@ -75,13 +81,12 @@ class ClinicalAgent:
             }
 
         if self.client is None:
-            self.client = get_openai_client()
+            self.client = get_gemini_client()
 
-        response = self.client.responses.create(
+        response = self.client.models.generate_content(
             model=self.model,
-            store=False,
-            instructions=INSTRUCTIONS,
-            input=json.dumps(
+            config={"system_instruction": INSTRUCTIONS},
+            contents=json.dumps(
                 {
                     "question": question,
                     "evidence": sources,
@@ -94,7 +99,7 @@ class ClinicalAgent:
             "status": "completed",
             "domain": "clinical",
             "question": question,
-            "answer": response.output_text.strip(),
+            "answer": (response.text or "").strip(),
             "sources": sources,
         }
 
